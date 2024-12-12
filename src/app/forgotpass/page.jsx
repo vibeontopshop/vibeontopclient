@@ -42,7 +42,7 @@ export default function SignUp() {
           &lt; Back
         </Link></p>
           <h1 className="text-4xl font-bold text-gray-900">Forgot Password</h1>
-          <p className="mt-3 text-sm text-gray-800">Enter Your registered email address. we'll send you a code to reset your password</p>
+          <p className="mt-3 text-sm text-gray-800">Enter Your registered email address. we will send you a code to reset your password</p>
 
           <form className="mt-6 space-y-4">
             {/* First Name */}
