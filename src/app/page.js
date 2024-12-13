@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Page from "./signin/page"
+import Page from "./OnBoard/page"
 
 
 export default function Home() {

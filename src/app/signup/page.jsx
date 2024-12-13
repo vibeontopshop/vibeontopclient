@@ -1,93 +1,98 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import BgImage from "../../assets/Group 1000006143.png";
 import Logo from "../../assets/Frame 1261153122.png";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    role: "",
-    email: "",
-    password: "",
+    FirstName: '',
+    role: '',
+    email: '',
+    password: '',
   });
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const router = useRouter();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);
-    setSuccess(null);
+
+    console.log('formData before stringify:', formData);
+
+    const jsonString = JSON.stringify(formData);
+    console.log('JSON String:', jsonString);
 
     try {
-      const response = await fetch("http://localhost:8080/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
+      const response = await fetch(
+        `https://vibeontopbackend.onrender.com//api/auth/signup`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonString,
+        }
+      );
 
       if (!response.ok) {
-        console.error("SignUp Error:", data);
-        throw new Error(data.message || "Failed to sign up.");
+        const errorData = await response.json().catch(() => ({ message: 'Signup failed' }));
+        console.error('Error response:', errorData);
+        setError(errorData.message || 'Signup failed');
+        return;
       }
 
-      setSuccess(data.message);
-      setFormData({
-        firstName: "",
-        role: "",
-        email: "",
-        password: "",
-      });
+      const data = await response.json();
+      console.log('Signup successful', data);
+      setSuccess(true);
+      router.push('/');
+      setError(null);
     } catch (error) {
-      console.error("Error during signup:", error);
-      setError(error.message || "An unexpected error occurred.");
+      console.error('Fetch error:', error);
+      setError('An error occurred during signup.');
+      setSuccess(false);
     }
   };
 
   return (
-    <div className="flex min-h-screen flex-col lg:flex-row bg-gray-800 text-gray-800">
-      {/* Left Section - Image and Logo */}
-      <div className="lg:w-1/2 relative flex flex-col justify-center items-center bg-gray-100">
-        {/* Logo */}
-        <div className="absolute top-4 left-4 z-10 flex items-center px-3 py-2 rounded-md">
-          <Image src={Logo} alt="Vibe Logo" width={200} height={200} priority />
+    <div className="flex flex-col min-h-screen lg:flex-row bg-gray-800 text-gray-800">
+      {/* Left Section - Background Image */}
+      <div className="relative lg:w-1/2 w-full h-64 lg:h-auto flex flex-col justify-center items-center bg-gray-100">
+        <div className="absolute top-4 left-4 z-10">
+          <Image src={Logo} alt="Vibe Logo" width={150} height={150} priority />
         </div>
-
-        {/* Main Image */}
-        <div className="absolute inset-0 h-full w-full">
+        <div className="absolute inset-0">
           <Image
             src={BgImage}
             alt="Sign Up Background"
-            layout="fill"
-            objectFit="cover"
-            priority
+            fill
+            style={{ objectFit: "cover" }}
+            className="z-0"
           />
         </div>
       </div>
-
+  
       {/* Right Section - Sign Up Form */}
-      <div className="lg:w-1/2 flex flex-col justify-center items-center p-8 bg-white">
-        <div className="w-full max-w-md">
-          <h1 className="text-3xl font-bold text-gray-900">Sign Up</h1>
-          <p className="mt-2 text-sm text-gray-600">Please enter your details</p>
-
-          {error && <p className="mt-4 text-red-500">{error}</p>}
-          {success && <p className="mt-4 text-green-500">{success}</p>}
-
+      <div className="lg:w-1/2 w-full flex flex-col justify-center items-center p-4 sm:p-8 bg-white">
+        <div className="w-full max-w-sm sm:max-w-md">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Sign Up</h1>
+          <p className="mt-2 text-sm sm:text-base text-gray-600">
+            Please enter your details
+          </p>
+  
+          {error && <p className="mt-4 text-sm text-red-500">{error}</p>}
+          {success && <p className="mt-4 text-sm text-green-500">{success}</p>}
+  
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
             {/* First Name */}
             <div>
@@ -105,7 +110,7 @@ export default function SignUp() {
                 placeholder="Enter your first name"
               />
             </div>
-
+  
             {/* Role Dropdown */}
             <div>
               <label htmlFor="role" className="block text-sm font-medium text-gray-700">
@@ -126,7 +131,7 @@ export default function SignUp() {
                 <option value="Customer">Customer</option>
               </select>
             </div>
-
+  
             {/* Email Address */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -143,7 +148,7 @@ export default function SignUp() {
                 placeholder="Enter your email"
               />
             </div>
-
+  
             {/* Password */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
@@ -160,25 +165,24 @@ export default function SignUp() {
                 placeholder="Enter your password"
               />
             </div>
-
+  
             {/* Terms and Conditions */}
             <div className="flex items-center">
               <input
                 type="checkbox"
                 id="terms"
                 name="terms"
-                className="h-4 w-4 text-blue-600 border-gray-300 rounded"
+                className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 required
               />
-              <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
+              <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
                 I agree to the{" "}
                 <Link href="/terms" className="text-blue-600 hover:underline">
                   Terms & Conditions
                 </Link>
-
               </label>
             </div>
-
+  
             {/* Submit Button */}
             <button
               type="submit"
@@ -191,4 +195,5 @@ export default function SignUp() {
       </div>
     </div>
   );
+  
 }

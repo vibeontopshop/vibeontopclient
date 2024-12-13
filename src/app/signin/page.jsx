@@ -1,80 +1,81 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import BgImage from "../../assets/signin.jpg";
 import Logo from "../../assets/Frame 1261153122.png";
 
 export default function SignIn() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState(null);
+  const router = useRouter();
 
-  async function handleSignIn(e) {
-    e.preventDefault(); 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/auth/signin", {
+      const response = await fetch("https://vibeontopbackend.onrender.com/api/auth/signin", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }), 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        setError(errorData.message || "Signin failed."); 
-        return;
+        throw new Error("Sign-in failed");
       }
 
       const data = await response.json();
-      localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem("email", data.email);
-      console.log("User signed in successfully:", data);
-      window.location.href = "/signup"; 
-    } catch (err) {
-      console.error("Error during signin:", err);
-      setError("An error occurred while signing in."); 
-    }
-  }
+      localStorage.setItem("token", data.accessToken);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Client-side logic here, like redirecting after successful signin
+      console.log("Sign-in successful", data);
+      router.push("/");
+    } catch (error) {
+      console.error("Error:", error);
+      setError("Failed to sign in, please check your credentials.");
     }
-  }, []);
+  };
 
   return (
     <div className="flex min-h-screen flex-col lg:flex-row bg-gray-800 text-gray-800">
-      <div className="lg:w-1/2 relative flex flex-col justify-center items-center bg-gray-100">
+      {/* Left Section - Background Image */}
+      <div className="relative lg:w-1/2 w-full h-64 lg:h-auto flex flex-col justify-center items-center bg-gray-100">
         <div className="absolute top-4 left-4 z-10">
-          <Image
-            src={Logo}
-            alt="Vibe Logo"
-            width={200}
-            height={200}
-          />
+          <Image src={Logo} alt="Vibe Logo" width={150} height={150} />
         </div>
         <div className="absolute inset-0">
           <Image
             src={BgImage}
             alt="Sign In Background"
             fill
-            style={{ objectFit: "cover" }}  // Fixed objectFit
+            style={{ objectFit: "cover" }}
             className="z-0"
           />
         </div>
       </div>
-
+  
       {/* Right Section - Sign In Form */}
-      <div className="lg:w-1/2 flex flex-col justify-center items-center p-8 bg-white">
-        <div className="w-full max-w-md">
-          <h1 className="text-3xl font-bold text-gray-900">Welcome</h1>
-          <p className="mt-1 text-sm text-gray-500">Please Sign-In Here</p>
-
-          <form onSubmit={handleSignIn} className="mt-6 space-y-4">
-            {error && <p className="text-red-500 text-sm">{error}</p>} {/* Display error message */}
-
+      <div className="lg:w-1/2 w-full flex flex-col justify-center items-center p-4 sm:p-8 bg-white">
+        <div className="w-full max-w-sm sm:max-w-md">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Welcome</h1>
+          <p className="mt-1 text-sm sm:text-base text-gray-500">Please Sign-In Here</p>
+  
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            {error && <p className="text-red-500 text-sm sm:text-base">{error}</p>}
+  
             <div>
               <label
                 htmlFor="email"
@@ -86,14 +87,14 @@ export default function SignIn() {
                 type="email"
                 id="email"
                 name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)} // Update email state on change
+                value={formData.email}
+                onChange={handleChange}
                 required
                 className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your email"
               />
             </div>
-
+  
             <div>
               <label
                 htmlFor="password"
@@ -105,14 +106,14 @@ export default function SignIn() {
                 type="password"
                 id="password"
                 name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)} 
+                value={formData.password}
+                onChange={handleChange}
                 required
                 className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your password"
               />
             </div>
-
+  
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
@@ -128,22 +129,23 @@ export default function SignIn() {
                   Remember Me
                 </label>
               </div>
-              <Link href="/forgot-password" className="text-sm text-blue-600 hover:underline">
-                 Forgot Password?
+              <Link
+                href="/forgot-password"
+                className="text-sm text-blue-600 hover:underline"
+              >
+                Forgot Password?
               </Link>
             </div>
-
+  
             <button
               type="submit"
               className="w-full py-2 px-4 text-white bg-[#B89C5D] rounded-md shadow hover:bg-[#8B7236] focus:outline-none focus:ring-2 focus:ring-[#8B7236] focus:ring-offset-2"
             >
               Sign in
             </button>
-
+  
             <div className="mt-4 text-center">
-              <span className="text-sm text-gray-700">
-                Not Registered Yet?
-              </span>
+              <span className="text-sm text-gray-700">Not Registered Yet?</span>
               <Link href="/signup" className="ml-1 text-blue-600 hover:underline">
                 Create an Account
               </Link>
@@ -153,4 +155,5 @@ export default function SignIn() {
       </div>
     </div>
   );
+  
 }
