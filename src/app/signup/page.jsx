@@ -8,7 +8,7 @@ import Logo from "../../assets/Frame 1261153122.png";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
-    FirstName: '',
+    FirstName: '', // Updated key to match input `name`
     role: '',
     email: '',
     password: '',
@@ -28,35 +28,36 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('formData before stringify:', formData);
-
-    const jsonString = JSON.stringify(formData);
-    console.log('JSON String:', jsonString);
-
     try {
       const response = await fetch(
-        `https://vibeontopbackend.onrender.com//api/auth/signup`,
+        `https://vibeontopbackend.onrender.com/api/auth/signup`,
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: jsonString,
+          body: JSON.stringify(formData), // Ensure `formData` is stringified
         }
       );
 
       if (!response.ok) {
+        // Handle error response
         const errorData = await response.json().catch(() => ({ message: 'Signup failed' }));
         console.error('Error response:', errorData);
         setError(errorData.message || 'Signup failed');
         return;
       }
 
+      // Handle successful response
       const data = await response.json();
       console.log('Signup successful', data);
-      setSuccess(true);
-      router.push('/');
+      setSuccess('Signup successful! Redirecting...');
       setError(null);
+
+      // Redirect after a short delay
+      setTimeout(() => {
+        router.push('/');
+      }, 2000);
     } catch (error) {
       console.error('Fetch error:', error);
       setError('An error occurred during signup.');
@@ -81,7 +82,7 @@ export default function SignUp() {
           />
         </div>
       </div>
-  
+
       {/* Right Section - Sign Up Form */}
       <div className="lg:w-1/2 w-full flex flex-col justify-center items-center p-4 sm:p-8 bg-white">
         <div className="w-full max-w-sm sm:max-w-md">
@@ -89,28 +90,28 @@ export default function SignUp() {
           <p className="mt-2 text-sm sm:text-base text-gray-600">
             Please enter your details
           </p>
-  
+
           {error && <p className="mt-4 text-sm text-red-500">{error}</p>}
           {success && <p className="mt-4 text-sm text-green-500">{success}</p>}
-  
+
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
             {/* First Name */}
             <div>
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="FirstName" className="block text-sm font-medium text-gray-700">
                 First Name
               </label>
               <input
                 type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
+                id="FirstName"
+                name="FirstName"
+                value={formData.FirstName}
                 onChange={handleChange}
                 required
                 className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your first name"
               />
             </div>
-  
+
             {/* Role Dropdown */}
             <div>
               <label htmlFor="role" className="block text-sm font-medium text-gray-700">
@@ -131,7 +132,7 @@ export default function SignUp() {
                 <option value="Customer">Customer</option>
               </select>
             </div>
-  
+
             {/* Email Address */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -148,7 +149,7 @@ export default function SignUp() {
                 placeholder="Enter your email"
               />
             </div>
-  
+
             {/* Password */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
@@ -165,7 +166,7 @@ export default function SignUp() {
                 placeholder="Enter your password"
               />
             </div>
-  
+
             {/* Terms and Conditions */}
             <div className="flex items-center">
               <input
@@ -182,7 +183,7 @@ export default function SignUp() {
                 </Link>
               </label>
             </div>
-  
+
             {/* Submit Button */}
             <button
               type="submit"
@@ -195,5 +196,4 @@ export default function SignUp() {
       </div>
     </div>
   );
-  
 }
