@@ -8,7 +8,7 @@ import Logo from "../../assets/Frame 1261153122.png";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
-    FirstName: '', // Updated key to match input `name`
+    FirstName: '',
     role: '',
     email: '',
     password: '',
