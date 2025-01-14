@@ -9,9 +9,11 @@ import Logo from "../../assets/Frame 1261153122.png";
 export default function Onboarding() {
   const router = useRouter();
 
+
   return (
     <div className="flex min-h-screen flex-col lg:flex-row bg-gray-900 text-gray-800">
       {/* Left Section - Background Image and Welcome Message */}
+      {/* kelane */}
       <div className="lg:w-1/2 flex flex-col justify-center items-center bg-gray-100 relative">
         <div className="absolute top-4 left-4">
           <Image src={Logo} alt="Vibe Logo" width={200} height={200} />
