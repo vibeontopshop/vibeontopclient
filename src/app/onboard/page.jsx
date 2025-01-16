@@ -72,7 +72,6 @@ export default function Home() {
               slidesPerView={2}
               autoplay={true}
               spaceBetween={30}
-              // freeMode={true}
               loop={true}
               centeredSlides={true}
               pagination={{
