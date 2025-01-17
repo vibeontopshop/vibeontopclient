@@ -6,7 +6,6 @@ import Logo from '../../assets/logo.png'
 export default function SignUp() {
   return (
     <div className="flex min-h-screen flex-col lg:flex-row bg-gray-800 text-gray-800">
-      {/* Left Section - Image and Logo */}
       <div className="lg:w-1/2 relative flex flex-col justify-center items-center bg-gray-100">
         {/* Logo */}
         <div className="absolute top-4 left-4 z-10 flex items-center px-3 py-2 rounded-md">
