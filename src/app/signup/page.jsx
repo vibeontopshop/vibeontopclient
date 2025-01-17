@@ -1,28 +1,63 @@
-"use-client"
-import Image from 'next/image';
-import Link from 'next/link';
-import BgImage from '../../assets/signup.png'
-import Logo from '../../assets/logo.png'
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import BgImage from "../../assets/signup.png";
+import Logo from "../../assets/logo.png";
+
 export default function SignUp() {
+  const [formData, setFormData] = useState({
+    FirstName: "",
+    email: "",
+    password: "",
+    role: "",
+  });
+  const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:8080/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Sign-up failed.");
+      }
+
+      const data = await response.json();
+      setSuccessMessage("Registration successful! You can now log in.");
+      setError(null); // Clear any previous errors
+    } catch (err) {
+      setError(err.message);
+      setSuccessMessage(null); // Clear any previous success message
+    }
+  };
+
   return (
     <div className="flex min-h-screen flex-col lg:flex-row bg-gray-800 text-gray-800">
       {/* Left Section - Image and Logo */}
       <div className="lg:w-1/2 relative flex flex-col justify-center items-center bg-gray-100">
         {/* Logo */}
         <div className="absolute top-4 left-4 z-10 flex items-center px-3 py-2 rounded-md">
-          <Image
-            src={Logo} // Replace with your logo path
-            alt="Vibe Logo"
-            width={200}
-            height={200}
-          />
-          {/* <span className="ml-2 text-lg font-bold text-gray-900">Vibe</span> */}
+          <Image src={Logo} alt="Vibe Logo" width={200} height={200} />
         </div>
-
 
         {/* Main Image */}
         <Image
-          src={BgImage} // Replace with your image path
+          src={BgImage}
           alt="Sign Up Background"
           layout="fill"
           objectFit="cover"
@@ -36,34 +71,21 @@ export default function SignUp() {
           <h1 className="text-3xl font-bold text-gray-900">Sign Up</h1>
           <p className="mt-2 text-sm text-gray-600">Please enter your details</p>
 
-          <form className="mt-6 space-y-4">
+          <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
             {/* First Name */}
             <div>
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="FirstName" className="block text-sm font-medium text-gray-700">
                 First Name
               </label>
               <input
                 type="text"
-                id="firstName"
-                name="firstName"
+                id="FirstName"
+                name="FirstName"
+                value={formData.FirstName}
+                onChange={handleChange}
                 required
                 className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your first name"
-              />
-            </div>
-
-            {/* Last Name */}
-            <div>
-              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-                Last Name
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                required
-                className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter your last name"
               />
             </div>
 
@@ -76,6 +98,8 @@ export default function SignUp() {
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email}
+                onChange={handleChange}
                 required
                 className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your email"
@@ -91,10 +115,33 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 name="password"
+                value={formData.password}
+                onChange={handleChange}
                 required
                 className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your password"
               />
+            </div>
+
+            {/* Role Dropdown */}
+            <div>
+              <label htmlFor="role" className="block text-sm font-medium text-gray-700">
+                Role
+              </label>
+              <select
+                id="role"
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+                required
+                className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="" disabled>
+                  Select a role
+                </option>
+                <option value="Business">Business</option>
+                <option value="Customer">Customer</option>
+              </select>
             </div>
 
             {/* Terms and Conditions */}
@@ -107,7 +154,7 @@ export default function SignUp() {
                 required
               />
               <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
-                I agree to the{' '}
+                I agree to the{" "}
                 <Link href="/terms" className="text-blue-600 hover:underline">
                   Terms & Conditions
                 </Link>
@@ -122,6 +169,11 @@ export default function SignUp() {
               Register
             </button>
           </form>
+
+          {/* Error Message */}
+          {error && <p className="mt-4 text-red-600 text-sm">{error}</p>}
+          {/* Success Message */}
+          {successMessage && <p className="mt-4 text-green-600 text-sm">{successMessage}</p>}
         </div>
       </div>
     </div>

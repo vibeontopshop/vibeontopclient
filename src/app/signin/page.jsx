@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Logo from '../../assets/logo.png'
-import BgImage from '../../assets/signin.jpg'
+import Logo from '../../assets/logo.png';
+import BgImage from '../../assets/signin.jpg';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -42,7 +42,7 @@ const Signin = () => {
       localStorage.setItem('token', data.accessToken);
 
       console.log('Sign-in successful', data);
-      router.push('/');
+      router.push('/Homepage');
     } catch (error) {
       console.error('Error:', error);
       setError('Failed to sign in, please check your credentials.');
@@ -55,17 +55,12 @@ const Signin = () => {
       <div className="lg:w-1/2 relative flex flex-col justify-center items-center bg-gray-100">
         {/* Logo */}
         <div className="absolute top-4 left-4 z-10 flex items-center px-3 py-2 rounded-md">
-          <Image
-            src={Logo} // Replace with your logo path
-            alt="Vibe Logo"
-            width={200}
-            height={200}
-          />
+          <Image src={Logo} alt="Vibe Logo" width={200} height={200} />
         </div>
 
         {/* Main Image */}
         <Image
-          src={BgImage} // Replace with your image path
+          src={BgImage}
           alt="Sign Up Background"
           layout="fill"
           objectFit="cover"
@@ -73,25 +68,24 @@ const Signin = () => {
         />
       </div>
 
-      {/* Right Section - Sign Up Form */}
+      {/* Right Section - Sign-In Form */}
       <div className="lg:w-1/2 flex flex-col justify-center items-center p-8 bg-white">
         <div className="w-full max-w-md">
           <h1 className="text-3xl font-bold text-gray-900">Welcome</h1>
-          <p className="mt-1 text-sm text-gray-500">Please Sign-Up Here</p> {/* Adjusted size and color */}
+          <p className="mt-1 text-sm text-gray-500">Please sign in here</p>
 
-          <form className="mt-6 space-y-4">
+          <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
             {/* Email Address */}
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email Address
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email}
+                onChange={handleChange}
                 required
                 className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your email"
@@ -100,16 +94,15 @@ const Signin = () => {
 
             {/* Password */}
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <input
                 type="password"
                 id="password"
                 name="password"
+                value={formData.password}
+                onChange={handleChange}
                 required
                 className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your password"
@@ -123,20 +116,13 @@ const Signin = () => {
                   type="checkbox"
                   id="terms"
                   name="terms"
-                  className="h-4 w-4 text-gold-600 border-gray-300 rounded" // Changed checkbox color
-                  required
+                  className="h-4 w-4 text-gold-600 border-gray-300 rounded"
                 />
-                <label
-                  htmlFor="terms"
-                  className="ml-2 block text-sm text-gray-700"
-                >
+                <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
                   Remember Me
                 </label>
               </div>
-              <Link
-                href="/forgot-password"
-                className="text-sm text-gold-600 hover:underline" // Changed color to gold
-              >
+              <Link href="/forgotpass" className="text-sm text-gold-600 hover:underline">
                 Forgot Password?
               </Link>
             </div>
@@ -151,20 +137,19 @@ const Signin = () => {
 
             {/* Not Registered Yet */}
             <div className="mt-4 text-center">
-              <label htmlFor="not-register">
-                Not Registered Yet?
-                <Link
-                  href="/Account"
-                  className="text-black-600 hover:underline ml-1"
-                >
-                  Create an Account
-                </Link>
-              </label>
+              <span>Not Registered Yet?</span>
+              <Link href="/signup" className="text-black-600 hover:underline ml-1">
+                Create an Account
+              </Link>
             </div>
           </form>
+
+          {/* Error Message */}
+          {error && <p className="mt-4 text-red-600 text-sm">{error}</p>}
         </div>
       </div>
     </div>
   );
-}
+};
+
 export default Signin;
