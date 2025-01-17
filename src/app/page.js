@@ -1,5 +1,5 @@
 'use client'
-import OnBoard from "./onBoard/page";
+import OnBoard from "./OnBoard/page";
 
 export default function Home() {
   return (
