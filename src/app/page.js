@@ -1,5 +1,5 @@
 'use client'
-import Page from "./OnBoard/page";
+import Page from "./Dashboard/page";
 
 export default function Home() {
   return (
