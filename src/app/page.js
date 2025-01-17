@@ -1,12 +1,10 @@
-import Image from "next/image";
-import Page from "./OnBoard/page";
-
-
+'use client'
+import OnBoard from "./OnBoard/page";
 
 export default function Home() {
   return (
     <>
-    <Page/>
+    <OnBoard/>
     </>
   );
 }

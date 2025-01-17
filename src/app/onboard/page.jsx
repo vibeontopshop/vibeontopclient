@@ -15,7 +15,7 @@ import Cap from "../../assets/images.png";
 import Text from "../../assets/text.png";
 import { useRouter } from "next/navigation";
 
-export default function Home() {
+export default function OnBoard() {
   const router = useRouter();
   const handleRedirect = () => {
     router.push("/signup");
