@@ -1,10 +1,10 @@
 'use client'
-import OnBoard from "./OnBoard/page";
+import Page from "./OnBoard/page";
 
 export default function Home() {
   return (
     <div>
-    <OnBoard/>
+    <Page/>
     </div>
   );
 }
