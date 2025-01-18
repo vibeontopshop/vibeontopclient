@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Logo from '../../assets/logo.png';
-import BgImage from '../../assets/signin.jpg';
-import Link from 'next/link';
-import Image from 'next/image';
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import Logo from "../../assets/logo.png";
+import BgImage from "../../assets/signin.jpg";
+import Link from "next/link";
+import Image from "next/image";
 
 const Signin = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [error, setError] = useState(null);
   const router = useRouter();
@@ -26,46 +26,55 @@ const Signin = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://vibeontopbackend.onrender.com/api/auth/signin', {
-        method: 'POST',
+      const response = await fetch("https://vibeontopbackend.onrender.com/api/auth/signin", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        throw new Error('Sign-in failed');
+        throw new Error("Sign-in failed");
       }
 
       const data = await response.json();
-      localStorage.setItem('token', data.accessToken);
+      localStorage.setItem("token", data.accessToken);
 
-      console.log('Sign-in successful', data);
-      router.push('/Homepage');
+      console.log("Sign-in successful", data);
+      router.push("/Homepage");
     } catch (error) {
-      console.error('Error:', error);
-      setError('Failed to sign in, please check your credentials.');
+      console.error("Error:", error);
+      setError("Failed to sign in, please check your credentials.");
     }
   };
 
   return (
     <div className="flex min-h-screen flex-col lg:flex-row bg-gray-800 text-gray-800">
       {/* Left Section - Image and Logo */}
-      <div className="lg:w-1/2 relative flex flex-col justify-center items-center bg-gray-100">
+      <div className="lg:w-1/2 sm:relative flex flex-col justify-center items-center bg-gray-100">
         {/* Logo */}
-        <div className="absolute top-4 left-4 z-10 flex items-center px-3 py-2 rounded-md">
-          <Image src={Logo} alt="Vibe Logo" width={200} height={200} />
-        </div>
+<div className=" absolute top-0 left-64 z-10 flex items-center px-0 py-8 rounded-md sm:left-10 sm:top-0 lg:left-4 lg:top-4">
+  <Image
+    src={Logo}
+    alt="Vibe Logo"
+    width={200}
+    height={200}
+    className="w-1/2 sm:w-2/3 lg:w-1/3"
+  />
+</div>
+
 
         {/* Main Image */}
-        <Image
-          src={BgImage}
-          alt="Sign Up Background"
-          layout="fill"
-          objectFit="cover"
-          className="absolute inset-0"
-        />
+        <div className="relative w-full h-full">
+          <Image
+            src={BgImage}
+            alt="Sign In Background"
+            layout="fill"
+            objectFit="cover"
+            className="absolute inset-0"
+          />
+        </div>
       </div>
 
       {/* Right Section - Sign-In Form */}

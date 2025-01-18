@@ -50,19 +50,27 @@ export default function SignUp() {
     <div className="flex min-h-screen flex-col lg:flex-row bg-gray-800 text-gray-800">
       {/* Left Section - Image and Logo */}
       <div className="lg:w-1/2 relative flex flex-col justify-center items-center bg-gray-100">
-        {/* Logo */}
-        <div className="absolute top-4 left-4 z-10 flex items-center px-3 py-2 rounded-md">
-          <Image src={Logo} alt="Vibe Logo" width={200} height={200} />
+          {/* Logo */}
+        <div className=" absolute top-0 left-64 z-10 flex items-center px-0 py-8 rounded-md sm:left-10 sm:top-0 lg:left-4 lg:top-4">
+          <Image
+            src={Logo}
+            alt="Vibe Logo"
+            width={200}
+            height={200}
+            className="w-1/2 sm:w-2/3 lg:w-1/3"
+          />
         </div>
 
         {/* Main Image */}
-        <Image
-          src={BgImage}
-          alt="Sign Up Background"
-          layout="fill"
-          objectFit="cover"
-          className="absolute inset-0"
-        />
+        <div className="relative w-full h-full">
+          <Image
+            src={BgImage}
+            alt="Sign Up Background"
+            layout="fill"
+            objectFit="cover"
+            className="absolute inset-0"
+          />
+        </div>
       </div>
 
       {/* Right Section - Sign Up Form */}
