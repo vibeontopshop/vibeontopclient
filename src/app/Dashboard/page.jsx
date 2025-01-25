@@ -19,10 +19,7 @@ import Ultimate from "../../assets/ULTIMATE.png"
 import Merged2 from "../../assets/SALE-removebg.png"
 import Mixed from "../../assets/mixed.png"
 
-import Facebook from "../SVGs/facebook.svg"
-import Insta from "../SVGs/insta.svg"
-import LinkedIn from "../SVGs/linkedin.svg"
-import Twitter from "../SVGs/twitter.svg"
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 import { FaBars } from 'react-icons/fa';
 import { useRouter } from "next/navigation";
