@@ -363,7 +363,6 @@ const HomePage = () => {
           </div>
           <div>
             <TrendVault />
-            <Latest />
             <Service />
             <Layout />
             <Footer />
