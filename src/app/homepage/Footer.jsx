@@ -13,6 +13,8 @@ const Footer = () => {
               src="/logo.png"
               alt="Jodiac Logo"
               className="h-auto w-[81px]"
+              width={50}
+              height={50}
             />
           </div>
           <div className="mt-6 text-sm leading-6 max-w-[248px] text-black text-opacity-60">

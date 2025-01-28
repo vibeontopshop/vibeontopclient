@@ -9,6 +9,8 @@ export default function ServiceCard({ icon, title, description, centered = false
           loading="lazy"
           src={icon}
           className="object-contain self-center aspect-square rounded-[33px] w-[65px]"
+          width={50}
+          height={50}
           alt={title}
         />
         <div className="flex flex-col mt-4 w-full">

@@ -18,7 +18,12 @@ export default function LatestDrip() {
       </p>
       <div className="grid gap-10 mb-12 w-full grid-cols-[repeat(3,1fr)] max-w-[1278px] max-md:gap-8 max-md:grid-cols-[repeat(2,1fr)] max-sm:gap-5 max-sm:grid-cols-[1fr]">
         {products.map((product) => (
-          <ReviewCard key={product.id} {...product} />
+          <ReviewCard
+            key={product.id}
+            {...product}
+            width={500}  // Make sure it's lowercase
+            height={300}  // Make sure it's lowercase
+          />
         ))}
       </div>
       <button

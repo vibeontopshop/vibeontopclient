@@ -34,12 +34,16 @@ export default class TrendVault extends React.Component {
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/870c079b3e6a574a2d3aac0ba3913700bd98f069e335baab67c45f1c8743b21a?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
               alt="Trend Vault featured product"
               className="object-contain z-0 max-w-full rounded-md aspect-[1.78] w-[666px]"
+              width={666}
+              height={100}
             />
             <Image
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/b00e2882d3224b98aeaf2059de3d0ed0ec3f861a95808750fd82698192525331?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
               alt="Trend Vault featured product"
               className="object-contain z-0 mt-8 max-w-full rounded-md aspect-[1.78] w-[666px]"
+              width={666}
+              height={100}
             />
             <div className="flex absolute left-0 bottom-10 z-0 flex-col max-w-full h-[204px] w-[543px]">
               <ProductCard {...productData[0]} />
@@ -53,6 +57,8 @@ export default class TrendVault extends React.Component {
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/ec2cc20923b386fe87b6c3d87a0ebd9c08695fc74c58ea20da839926609a267b?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
             alt="Trend Vault featured collection"
             className="object-contain z-0 flex-1 shrink self-stretch w-full rounded-md aspect-[0.84] basis-0 min-w-[240px] max-md:max-w-full"
+            width={666}
+            height={100}
           />
           <div className="flex absolute bottom-20 z-0 flex-col h-[204px] min-w-[240px] right-[116px] w-[543px] max-md:max-w-full">
             <ProductCard {...productData[2]} />

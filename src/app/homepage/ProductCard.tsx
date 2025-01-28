@@ -18,6 +18,8 @@ export function ProductCard({ title, number, imageSrc }: ProductCardProps) {
             src={imageSrc}
             alt=""
             className="object-contain shrink-0 my-auto w-12 aspect-[47.62] fill-[linear-gradient(95deg,#FDFDFD_3.88%,#9C9C9C_246.6%)] stroke-[1.765px] stroke-neutral-900"
+            width={500}
+            height={500}
           />
         </div>
         <div className="bg-clip-text basis-auto bg-[linear-gradient(95deg,#FDFDFD_3.88%,#9C9C9C_246.6%)]">

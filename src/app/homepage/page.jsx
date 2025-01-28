@@ -27,7 +27,6 @@ import Twitter from "../SVGs/twitter.svg"
 import { DotIndicator } from "./DotIndicator";
 
 import TrendVault from "./TrendVault";
-import Latest from "./LatestDrip"
 import Service from "./ServiceSection"
 import Layout from "./NewsletterLayout"
 import Footer from "./Footer"
@@ -237,6 +236,8 @@ const HomePage = () => {
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b5af165fcc82e55191558f64b0a54aaf1e52ef83c6ebc72dbcfba918fbec497?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
               alt=""
               className="object-cover absolute inset-0 size-full"
+              width={500}
+              height={300}
             />
             <div className="flex relative flex-wrap gap-10 items-start max-w-full w-[857px]">
               <div className="flex gap-5 items-center w-[120px]">
@@ -254,7 +255,6 @@ const HomePage = () => {
           </div>
           <div>
             <TrendVault />
-            <Latest />
             <Service />
             <Layout />
             <Footer />
@@ -344,6 +344,8 @@ const HomePage = () => {
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b5af165fcc82e55191558f64b0a54aaf1e52ef83c6ebc72dbcfba918fbec497?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
               alt=""
               className="object-cover absolute inset-0 size-full"
+              width={500}
+              height={300}
             />
             <div className="flex relative flex-wrap gap-10 items-start max-w-full w-[857px]">
               <div className="flex gap-5 items-center w-[120px]">

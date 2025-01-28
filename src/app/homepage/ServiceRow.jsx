@@ -9,6 +9,8 @@ export default function ServiceRow({ icon, title, description }) {
           src={icon}
           className="object-contain shrink-0 aspect-square rounded-[33px] w-[65px]"
           alt={title}
+          width={50}
+          height={50}
         />
         <div className="flex flex-col flex-1 shrink basis-0 min-w-[240px] max-md:max-w-full">
           <div className="text-3xl leading-none text-neutral-700 max-md:max-w-full">
