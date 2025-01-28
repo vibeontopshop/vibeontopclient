@@ -1,5 +1,4 @@
 "use client";
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import Image from "next/image"; 
 import Logo from "../../assets/logoEdit.png"; 
@@ -7,41 +6,18 @@ import LeftMainPicture from "../../assets/b/w.png";
 import RightMainPicture from "../../assets/image.png";
 import Vot1 from "../../assets/VOTEdit.png";
 import Ontop from "../../assets/OnTopEdit.png";
-=======
-import Image from "next/image";
-import Logo from "../../assets/logo.png";
-import Kalua from "../../assets/b/w.png";
-import Handsome from "../../assets/image.png";
-import Vot1 from "../../assets/Vot1.png";
-import Ontop from "../../assets/ontop.png";
->>>>>>> 4e7b7cf450ccfc4b0c204fb56700377fc1720aad
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import GroupBg from "../../assets/Group 1000006046.png";
 import Group from "../../assets/group.png";
-<<<<<<< HEAD
 import Cap from "../../assets/images.png"
 import Text from "../../assets/text.png"
 import Merged from "../../assets/merged.png"
 import Ultimate from "../../assets/ULTIMATE.png"
 import Merged2 from "../../assets/SALE-removebg.png"
 import Mixed from "../../assets/mixed.png"
-=======
-import Cap from "../../assets/images.png";
-import Text from "../../assets/text.png";
-import { useRouter } from "next/navigation";
-
-export default function Home() {
-  const router = useRouter();
-  const handleRedirect = () => {
-    router.push("/signup");
-  };
-  const handleLogin = () => {
-    router.push("/signin");
-  };
->>>>>>> 4e7b7cf450ccfc4b0c204fb56700377fc1720aad
 
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
@@ -96,7 +72,6 @@ const HomePage = () => {
   }, []);
   
   return (
-<<<<<<< HEAD
     <>
     {!isMobileView ? (
     <div className="h-lvh flex flex-col">
@@ -110,105 +85,6 @@ const HomePage = () => {
             ) : (
               <div className="flex flex-col items-center">
                 <p></p>
-=======
-    <div
-      id="main_container"
-      className="flex flex-col h-screen overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-200 text-gray-900"
-    >
-      <div
-        id="content"
-        className="flex flex-col md:flex-row justify-between h-full"
-      >
-        {/* Left Content */}
-        <div
-          id="left_content"
-          className="relative flex flex-col p-6 justify-center w-full md:w-[33vw] bg-white/60 backdrop-blur-md shadow-lg"
-        >
-          <div className="absolute bg-white/80 shadow-lg inset-0 w-full md:w-[33vw] z-0"></div>
-          <div className="relative z-10">
-            <Image src={Logo} alt="Logo" width={120} height={50} />
-            <div className="mt-8 space-y-5">
-              <Image
-                className="transition-transform duration-500 hover:scale-105"
-                src={Kalua}
-                alt="Kalua"
-                width={400}
-                height={600}
-              />
-              <div className="absolute top-[150px] left-4">
-                <Image
-                  className="transition-opacity duration-500 hover:opacity-90"
-                  src={Vot1}
-                  alt="Vot1"
-                  width={100}
-                  height={50}
-                />
-              </div>
-              <div className="absolute top-[300px] left-4">
-                <Image
-                  className="transition-transform duration-500 hover:translate-y-2"
-                  src={Ontop}
-                  alt="Ontop"
-                  width={200}
-                  height={200}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Middle Content */}
-        <div
-          id="middle_content"
-          className="w-full md:w-[33vw] flex flex-col justify-center items-center overflow-hidden"
-        >
-          <Swiper
-            direction="vertical"
-            slidesPerView={1}
-            autoplay={{ delay: 3000 }}
-            loop={true}
-            pagination={{ clickable: true }}
-            modules={[FreeMode, Pagination, Autoplay]}
-            className="w-full h-full"
-          >
-<SwiperSlide className="relative flex items-center justify-center">
-              <Image
-                className="absolute w-full transition-opacity duration-700 ease-in-out hover:opacity-90"
-                height={200}
-                width={900}
-                src={GroupBg}
-                alt="Background"
-              />
-              <Image
-                className="absolute w-full transition-transform duration-700 ease-in-out hover:scale-105"
-                height={200}
-                width={900}
-                src={Group}
-                alt="Group"
-              />
-            </SwiperSlide>
-            <SwiperSlide className="flex flex-col items-center">
-              <Image
-                className="transition-transform duration-500 hover:scale-105"
-                src={Text}
-                alt="Text"
-                width={300}
-                height={100}
-              />
-              <div className="flex flex-col md:flex-row justify-center gap-5 mt-5">
-                <button
-                  className="px-7 py-2 bg-[#CEB863] shadow-md shadow-gray-300 transition-transform duration-700 ease-in-out hover:scale-110"
-                  onClick={handleRedirect}
-                >
-                  For Business
-                </button>
-                <button
-                  className="px-7 py-2 bg-[#CEB863] shadow-md shadow-gray-300 transition-transform duration-700 ease-in-out hover:scale-110"
-                  onClick={handleRedirect}
-                >
-                  For Consumer
-                </button>
->>>>>>> 4e7b7cf450ccfc4b0c204fb56700377fc1720aad
               </div>
             )}
                  </div>
@@ -343,7 +219,6 @@ const HomePage = () => {
     </svg>
         </div>
 
-<<<<<<< HEAD
         <div className="border border-solid border-white p-1 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="white">
     <path d="M2 18.5C3.76504 19.521 5.81428 20 8 20C14.4808 20 19.7617 14.8625 19.9922 8.43797L22 4.5L18.6458 5C17.9407 4.37764 17.0144 4 16 4C13.4276 4 11.5007 6.51734 12.1209 8.98003C8.56784 9.20927 5.34867 7.0213 3.48693 4.10523C2.25147 8.30185 3.39629 13.3561 6.5 16.4705C6.5 17.647 3.5 18.3488 2 18.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
 </svg></div>
@@ -354,44 +229,6 @@ const HomePage = () => {
     <path d="M6.5 4.25C6.5 5.49264 5.49264 6.5 4.25 6.5C3.00736 6.5 2 5.49264 2 4.25C2 3.00736 3.00736 2 4.25 2C5.49264 2 6.5 3.00736 6.5 4.25Z" stroke="currentColor" strokeWidth="1.5" />
     <path d="M12.326 9.5H11.5C10.5572 9.5 10.0858 9.5 9.79289 9.79289C9.5 10.0858 9.5 10.5572 9.5 11.5V20C9.5 20.9428 9.5 21.4142 9.79289 21.7071C10.0858 22 10.5572 22 11.5 22H12C12.9428 22 13.4142 22 13.7071 21.7071C14 21.4142 14 20.9428 14 20L14.0001 16.5001C14.0001 14.8433 14.5281 13.5001 16.0879 13.5001C16.8677 13.5001 17.5 14.1717 17.5 15.0001V19.5001C17.5 20.4429 17.5 20.9143 17.7929 21.2072C18.0857 21.5001 18.5572 21.5001 19.5 21.5001H19.9987C20.9413 21.5001 21.4126 21.5001 21.7055 21.2073C21.9984 20.9145 21.9985 20.4432 21.9987 19.5006L22.0001 14.0002C22.0001 11.515 19.6364 9.50024 17.2968 9.50024C15.9649 9.50024 14.7767 10.1531 14.0001 11.174C14 10.5439 14 10.2289 13.8632 9.995C13.7765 9.84686 13.6531 9.72353 13.505 9.63687C13.2711 9.5 12.9561 9.5 12.326 9.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
 </svg>
-=======
-        {/* Right Content */}
-        <div
-          id="right_content"
-          className="relative flex flex-col items-center justify-between w-full md:w-[33vw] p-6 bg-white/60 backdrop-blur-md shadow-lg"
-        >
-<div className=" relative z-10">
-  <ul className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4 w-full">
-    {/* Contact and About */}
-    <div className="flex flex-col md:flex-row gap-5 ">
-      <li className="text-center hover:text-gray-700 transition-colors">
-        CONTACT
-      </li>
-      <li className="text-center hover:text-gray-700 transition-colors">
-        ABOUT
-      </li>
-    </div>
-
-    {/* Login Button */}
-    <div className="flex justify-center md:ml-auto">
-      <button
-        className="w-full md:w-auto px-8 py-3 bg-[#CEB863] rounded-lg shadow-lg text-center transition-transform ease-in-out hover:scale-105 duration-300 mt-4 md:mt-0"
-        onClick={ handleLogin}
-      >
-        Login
-      </button>
-    </div>
-  </ul>
-</div>
-
-          <Image
-            className="transition-opacity duration-500 hover:opacity-90"
-            src={Handsome}
-            alt="Handsome"
-            width={300}
-            height={500}
-          />
->>>>>>> 4e7b7cf450ccfc4b0c204fb56700377fc1720aad
         </div>
         <div className="border border-solid border-white p-1 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
     <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
@@ -506,10 +343,6 @@ const HomePage = () => {
 )}
     </>
   );
-<<<<<<< HEAD
 };
 
 export default HomePage;
-=======
-} 
->>>>>>> 4e7b7cf450ccfc4b0c204fb56700377fc1720aad

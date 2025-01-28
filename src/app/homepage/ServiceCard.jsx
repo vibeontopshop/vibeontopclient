@@ -1,10 +1,11 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function ServiceCard({ icon, title, description, centered = false }) {
   return (
     <div className="flex overflow-hidden flex-col flex-1 shrink justify-center p-6 basis-0 bg-zinc-100 min-w-[240px] max-md:px-5">
       <div className="flex flex-col flex-1 p-6 w-full bg-white max-md:px-5">
-        <img
+        <Image
           loading="lazy"
           src={icon}
           className="object-contain self-center aspect-square rounded-[33px] w-[65px]"

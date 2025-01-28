@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
 import { SiVisa, SiMastercard, SiPaypal, SiApplepay, SiGooglepay } from 'react-icons/si';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -8,15 +9,15 @@ const Footer = () => {
       <div className="flex flex-wrap gap-20 mx-auto my-0 max-w-[1240px] max-md:gap-10 max-sm:flex-col max-sm:gap-10">
         <div className="flex-[0_0_240px]">
           <div className="flex gap-4 items-center">
-            <img
+            <Image
               src="/logo.png"
               alt="Jodiac Logo"
               className="h-auto w-[81px]"
             />
           </div>
           <div className="mt-6 text-sm leading-6 max-w-[248px] text-black text-opacity-60">
-            Jodiac collection! You'll find our exclusive collection of Swag
-            and cosmic style T-shirts, all designed in-house by our creative
+            Jodiac collection&apos; You will find our exclusive collection of Swag
+            and cosmic style T shirts, all designed in house by our creative
             team.
           </div>
           <div className="flex gap-3 mt-4">

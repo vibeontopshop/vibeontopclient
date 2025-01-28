@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import StarRating from './StarRating';
 import StockIndicator from './StockIndicator';
+import Image from 'next/image';
 
 export default function ReviewCard({ 
   image, 
@@ -16,7 +17,7 @@ export default function ReviewCard({
   return (
     <div className="flex relative flex-col w-full">
       <div className="relative mb-4 w-full aspect-[0.77] bg-neutral-100">
-        <img
+        <Image
           src={image}
           alt={name}
           className="object-cover w-full h-full"
@@ -31,7 +32,7 @@ export default function ReviewCard({
           className="absolute w-12 h-12 cursor-pointer right-[15px] top-[15px]"
           aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
         >
-          <img
+          <Image
             src={isFavorite ? "/heart-filled.svg" : "/heart-outline.svg"}
             alt=""
             className="w-full h-full"
@@ -41,7 +42,7 @@ export default function ReviewCard({
           className="absolute w-9 h-9 cursor-pointer bottom-[15px] right-[15px]"
           aria-label="Share product"
         >
-          <img src="/share-icon.svg" alt="" className="w-full h-full" />
+          <Image src="/share-icon.svg" alt="" className="w-full h-full" />
         </button>
         <StockIndicator inStock={true} />
       </div>

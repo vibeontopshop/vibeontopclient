@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ProductCard } from "./ProductCard";
+import Image from "next/image";
 
 const productData = [
   {
@@ -28,13 +29,13 @@ export default class TrendVault extends React.Component {
         </div>
         <div className="flex relative z-0 gap-8 items-start mt-16 max-w-full w-[1357px] max-md:mt-10">
           <div className="flex relative z-0 flex-col min-w-[240px] w-[666px] max-md:max-w-full">
-            <img
+            <Image
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/870c079b3e6a574a2d3aac0ba3913700bd98f069e335baab67c45f1c8743b21a?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
               alt="Trend Vault featured product"
               className="object-contain z-0 max-w-full rounded-md aspect-[1.78] w-[666px]"
             />
-            <img
+            <Image
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/b00e2882d3224b98aeaf2059de3d0ed0ec3f861a95808750fd82698192525331?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
               alt="Trend Vault featured product"
@@ -47,7 +48,7 @@ export default class TrendVault extends React.Component {
               <ProductCard {...productData[1]} />
             </div>
           </div>
-          <img
+          <Image
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/ec2cc20923b386fe87b6c3d87a0ebd9c08695fc74c58ea20da839926609a267b?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
             alt="Trend Vault featured collection"

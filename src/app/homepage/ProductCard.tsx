@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ProductCardProps } from "./types";
+import Image from "next/image";
 
 export function ProductCard({ title, number, imageSrc }: ProductCardProps) {
   return (
@@ -12,7 +13,7 @@ export function ProductCard({ title, number, imageSrc }: ProductCardProps) {
           <div className="grow bg-clip-text bg-[linear-gradient(95deg,#FDFDFD_3.88%,#9C9C9C_246.6%)]">
             {number}
           </div>
-          <img
+          <Image
             loading="lazy"
             src={imageSrc}
             alt=""

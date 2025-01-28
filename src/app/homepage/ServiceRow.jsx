@@ -1,10 +1,10 @@
 import React from 'react';
-
+import Image from 'next/image';
 export default function ServiceRow({ icon, title, description }) {
   return (
     <div className="flex overflow-hidden flex-col justify-center p-6 w-full bg-zinc-100 max-md:px-5 max-md:max-w-full">
       <div className="flex flex-wrap gap-4 items-start p-6 w-full bg-white max-md:px-5 max-md:max-w-full">
-        <img
+        <Image
           loading="lazy"
           src={icon}
           className="object-contain shrink-0 aspect-square rounded-[33px] w-[65px]"
