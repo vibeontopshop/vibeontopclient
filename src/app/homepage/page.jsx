@@ -18,12 +18,6 @@ import Merged from "../../assets/merged.png"
 import Ultimate from "../../assets/ULTIMATE.png"
 import Merged2 from "../../assets/SALE-removebg.png"
 import Mixed from "../../assets/mixed.png"
-// import Girl from "../../assets/girl.png"
-// import Black from "../../assets/black.png"
-import Facebook from "../SVGs/facebook.svg"
-import Insta from "../SVGs/insta.svg"
-import LinkedIn from "../SVGs/linkedin.svg"
-import Twitter from "../SVGs/twitter.svg"
 import { DotIndicator } from "./DotIndicator";
 
 import TrendVault from "./TrendVault";
@@ -63,14 +57,6 @@ const HomePage = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-
-
-
-
-
-
-
   useEffect(() => {
     const handleResize = () => {
       setisTabView(window.innerWidth <= 1200);
