@@ -19,7 +19,7 @@ import Ultimate from "../../assets/ULTIMATE.png"
 import Merged2 from "../../assets/SALE-removebg.png"
 import Mixed from "../../assets/mixed.png"
 import { DotIndicator } from "./DotIndicator";
-
+import VibeBanner from "../../assets/scBanner.png"
 import TrendVault from "./TrendVault";
 import Service from "./ServiceSection"
 import Layout from "./NewsletterLayout"
@@ -154,14 +154,6 @@ const HomePage = () => {
                   />
                 </SwiperSlide>
               </Swiper>
-              <div className="flex flex-row justify-around items-center gap-10 mt-10">
-                <button className="px-7 py-2 bg-[#CEB863] shadow-md shadow-gray-300">
-                  For Business
-                </button>
-                <button className="px-7 py-2 bg-[#CEB863] shadow-md shadow-gray-300">
-                  For Consumer
-                </button>
-              </div>
             </section>
 
             <section className="flex-1 flex flex-col bg-custom-section-color">
@@ -219,11 +211,9 @@ const HomePage = () => {
           <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
             <Image
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b5af165fcc82e55191558f64b0a54aaf1e52ef83c6ebc72dbcfba918fbec497?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
+              src= {VibeBanner}
               alt=""
               className="object-cover absolute inset-0 size-full"
-              width={500}
-              height={300}
             />
             <div className="flex relative flex-wrap gap-10 items-start max-w-full w-[857px]">
               <div className="flex gap-5 items-center w-[120px]">
@@ -327,11 +317,9 @@ const HomePage = () => {
           <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
             <Image
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b5af165fcc82e55191558f64b0a54aaf1e52ef83c6ebc72dbcfba918fbec497?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
+              src={VibeBanner}
               alt=""
               className="object-cover absolute inset-0 size-full"
-              width={500}
-              height={300}
             />
             <div className="flex relative flex-wrap gap-10 items-start max-w-full w-[857px]">
               <div className="flex gap-5 items-center w-[120px]">
