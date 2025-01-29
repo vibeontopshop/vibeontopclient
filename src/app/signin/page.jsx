@@ -42,7 +42,7 @@ const Signin = () => {
       localStorage.setItem("token", data.accessToken);
 
       console.log("Sign-in successful", data);
-      router.push("/Homepage");
+      router.push("/homepage");
     } catch (error) {
       console.error("Error:", error);
       setError("Failed to sign in, please check your credentials.");
