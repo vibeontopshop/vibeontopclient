@@ -25,7 +25,7 @@ import { FaBars } from 'react-icons/fa';
 import { useRouter } from "next/navigation";
 
 
-const HomePage = () => {
+const Home = () => {
   const [isTabView, setisTabView] = useState(false);
   const [isMobileView, setisMobileView] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false); // State to manage menu visibility
@@ -345,4 +345,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
