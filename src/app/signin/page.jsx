@@ -76,7 +76,6 @@ const Signin = () => {
           />
         </div>
       </div>
-
       {/* Right Section - Sign-In Form */}
       <div className="lg:w-1/2 flex flex-col justify-center items-center p-8 bg-white">
         <div className="w-full max-w-md">

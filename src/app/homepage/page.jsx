@@ -26,13 +26,10 @@ import Layout from "./NewsletterLayout"
 import Footer from "./Footer"
 import axios from "axios"
 import { FaBars } from 'react-icons/fa';
-
-// import First from "../../assets/first.png";
-
 const Home = () => {
   const [isTabView, setisTabView] = useState(false);
   const [isMobileView, setisMobileView] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false); // State to manage menu visibility
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -41,11 +38,11 @@ const Home = () => {
       setisMobileView(window.innerWidth <= 765);
     };
 
-    handleResize(); // Set initial state
-    window.addEventListener("resize", handleResize); // Add resize listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize); // Cleanup listener
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -62,31 +59,36 @@ const Home = () => {
       setisTabView(window.innerWidth <= 1200);
     };
 
-    handleResize(); // Set initial state
-    window.addEventListener("resize", handleResize); // Add resize listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize); // Cleanup listener
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem('token');
-      if (token){
-        try{
-          const response = await axios.get('https://vibeontopbackend.onrender.com/api/auth/getuser',{
-          headers:{ Authorization :`Bearer ${token}`},
+  
+      if (!token) {
+        console.error('Token not available. You need to sign up to view the page.');
+        return;
+      }
+  
+      try {
+        const response = await axios.get('https://vibeontopbackend.onrender.com/api/auth/getuser', {
+          headers: { Authorization: `Bearer ${token}` },
         });
-        console.log(response.data.user);
-          setUser(response.data.user);
-        }catch(error){
-          console.error('error fetching user:',error)
-        }
+        setUser(response.data.user);
+      } catch (error) {
+        console.error('Error fetching user:', error);
       }
     };
-    fetchUser()
-  },[]);
+  
+    fetchUser();
+  }, []);
+  
   const dots = Array(3).fill(null);
   return (
     <>
@@ -229,8 +231,6 @@ const Home = () => {
               <button></button>
             </div>
           </div>
-
-          {/* VIBE RIGHT NOW!!  */}
           <div className="flex shrink-0 self-stretch my-auto rounded-full bg-zinc-400 h-[11px] w-[11px]" />
           <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
             <Image
@@ -270,31 +270,26 @@ const Home = () => {
             <FaBars
               size={30}
               color="white"
-              onClick={() => setMenuOpen(true)} // Open menu on click
+              onClick={() => setMenuOpen(true)}
               className="cursor-pointer"
             />
           </div>
-
-          {/* Full-Screen Menu */}
           <div
             className={`fixed inset-0 z-50 flex justify-end transition-opacity duration-300 ease-in-out ${menuOpen ? 'bg-black bg-opacity-50 opacity-100 visible' : 'opacity-0 invisible'
               }`}
-            onClick={() => setMenuOpen(false)} // Close menu on backdrop click
+            onClick={() => setMenuOpen(false)}
           >
-            {/* Sidebar Menu */}
             <div
               className={`bg-white w-3/5 h-full shadow-md transform transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'
                 }`}
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the menu
+              onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
               <button
                 className="absolute top-4 right-4 text-black text-xl"
-                onClick={() => setMenuOpen(false)} // Close on button click
+                onClick={() => setMenuOpen(false)}
               >
                 ✖
               </button>
-              {/* Menu Items */}
               <nav className="space-y-4 text-xl font-medium p-6">
                 <ul>
                   <li><a href="#home" className="hover:text-gray-600 list-none">Home</a></li>
@@ -312,7 +307,12 @@ const Home = () => {
             <section className="flex flex-col justify-center items-center w-full">
               <div className="flex justify-center items-center">
                 <Image className="" src={Logo} alt="logo" width={150} />
-                <button className="px-7 py-2 h-10 bg-[#CEB863] shadow-md shadow-gray-300">LOGIN</button>
+                {user && user.name ? (
+  <span className="text-black">Hello, {user.name}</span>
+) : (
+  <span className="text-black">You need to sign in</span>
+)}
+
               </div>
               <Image className="" src={Merged} alt="logo" />
             </section>

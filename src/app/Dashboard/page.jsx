@@ -50,14 +50,6 @@ const Home = () => {
       window.removeEventListener("resize", handleResize); // Cleanup listener
     };
   }, []);
-
-
-
-
-
-
-
-
   useEffect(() => {
     const handleResize = () => {
       setisTabView(window.innerWidth <= 1200);
@@ -108,7 +100,7 @@ const Home = () => {
         {isTabView ? (
             <div className="flex flex-row justify-center items-center">
               <Image className="" src={Logo} alt="logo" width={100} />
-              <button className="px-7 py-2 bg-[#CEB863] shadow-md shadow-gray-300">
+              <button className="px-7 py-2 bg-[#CEB863] shadow-md shadow-gray-300" onClick={handellogin}>
                 LOGIN
               </button>
             </div>
@@ -291,7 +283,7 @@ const Home = () => {
                 <section className="flex flex-col justify-center items-center w-full">
                   <div className="flex justify-center items-center">
                 <Image className="" src={Logo} alt="logo" width={150}/>
-                <button className="px-7 py-2 h-10 bg-[#CEB863] shadow-md shadow-gray-300">LOGIN</button>
+                <button className="px-7 py-2 h-10 bg-[#CEB863] shadow-md shadow-gray-300" onClick={handellogin}>LOGIN</button>
                   </div>
                 <Image className="" src={Merged} alt="logo"/>
                 </section>
