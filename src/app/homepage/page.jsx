@@ -308,10 +308,10 @@ const Home = () => {
               <div className="flex justify-center items-center">
                 <Image className="" src={Logo} alt="logo" width={150} />
                 {user && user.name ? (
-  <span className="text-black">Hello, {user.name}</span>
-) : (
-  <span className="text-black">You need to sign in</span>
-)}
+                  <span className="text-black">Hello, {user.name}</span>
+                    ) : (
+                  <span className="text-black">You need to sign in</span>
+                    )}
 
               </div>
               <Image className="" src={Merged} alt="logo" />
