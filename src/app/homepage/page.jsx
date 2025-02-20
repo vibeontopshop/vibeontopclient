@@ -28,13 +28,28 @@ import Footer from "./Footer"
 import { FaBars } from 'react-icons/fa';
 
 // import First from "../../assets/first.png";
-
+const images = [
+  { src: "https://c0.wallpaperflare.com/preview/192/66/526/front-view-of-man-s-face.jpg" },
+  { src: "https://images.unsplash.com/photo-1563170446-9c3c0622d8a9?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvcnRyYWl0JTIwcGhvdG9ncmFwaHl8ZW58MHx8MHx8fDA%3D" },
+  { src: "https://img.freepik.com/free-photo/close-up-portrait-young-african-man-with-stubble_171337-1296.jpg" },
+  { src: "https://cdn.mos.cms.futurecdn.net/p5quSf4dZXctG9WFepXFdR.jpg" },
+];
 const HomePage = () => {
   const [isTabView, setisTabView] = useState(false);
   const [isMobileView, setisMobileView] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false); // State to manage menu visibility
   const [scrolled, setScrolled] = useState(false);
+  const [imageList, setImageList] = useState(images);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+
+  const prevSlide = () => {
+    setImageList((prev) => [...prev.slice(1), prev[0]]); // Moves first to last
+  };
+
+  const nextSlide = () => {
+    setImageList((prev) => [prev[prev.length - 1], ...prev.slice(0, -1)]); // Moves last to first
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -216,7 +231,7 @@ const HomePage = () => {
 
           {/* VIBE RIGHT NOW!!  */}
           <div className="flex shrink-0 self-stretch my-auto rounded-full bg-zinc-400 h-[11px] w-[11px]" />
-          <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
+          {/* <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
             <Image
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b5af165fcc82e55191558f64b0a54aaf1e52ef83c6ebc72dbcfba918fbec497?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
@@ -238,7 +253,57 @@ const HomePage = () => {
                 your unique cosmic style.
               </div>
             </div>
-          </div>
+          </div> */}
+<div className="w-full flex flex-col items-center bg-gray-100 py-10"> 
+  {/* Slider Container */}
+  <div className="relative flex space-x-4 w-[90%] overflow-hidden">
+    <div className="flex transition-transform duration-500 gap-1">
+      {imageList.map((img, index) => (
+        <div
+          key={index}
+          className={`relative shrink-0 ${index === 0 ? "w-[30%]" : "w-[25%]"} transition-all duration-500`}
+        >
+          <img
+            src={img.src}
+            alt={`Image ${index + 1}`}
+            className={`rounded-lg shadow-lg object-cover w-full h-[450px] ${index == 0 ? "h-[530px]" : ""}`}
+          />
+          {/* Sale Banner on First Image */}
+          {index === 0 && (
+            <div className="absolute bottom-5 left-5 bg-white p-4 shadow-md">
+              <p className="text-gray-600 text-sm">01 — Spring Sale</p>
+              <p className="text-2xl font-bold">30% OFF</p>
+            </div>
+          )}
+
+          {/* Navigation Buttons inside First Image */}
+          {index === 0 && (
+            <>
+              <button 
+                onClick={prevSlide} 
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 flex justify-center items-center w-12 h-12 p-3 rounded-full bg-white hover:bg-gray-400 transition shadow-lg text-2xl"
+              >
+                &lt;
+              </button>
+              <button 
+                onClick={nextSlide} 
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 flex justify-center items-center w-12 h-12 p-3 rounded-full bg-white hover:bg-gray-400 transition shadow-lg text-2xl"
+              >
+                &gt;
+              </button>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Description Below */}
+  <p className="mt-6 text-gray-700 text-center w-3/4">
+    At Jodiac, we offer stylish apparel to elevate your everyday look. From comfy cotton tees and trendy oversized shirts to classic polos, our collection ensures you stay effortlessly cool while showcasing your unique cosmic style.
+  </p>
+</div>
+
           <div>
             <TrendVault />
             <Service />
@@ -324,29 +389,64 @@ const HomePage = () => {
           </div>
           nv2
           <div className="flex shrink-0 self-stretch my-auto rounded-full bg-zinc-400 h-[11px] w-[11px]" />
-          <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
-            <Image
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b5af165fcc82e55191558f64b0a54aaf1e52ef83c6ebc72dbcfba918fbec497?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
-              alt=""
-              className="object-cover absolute inset-0 size-full"
-              width={500}
-              height={300}
-            />
-            <div className="flex relative flex-wrap gap-10 items-start max-w-full w-[857px]">
-              <div className="flex gap-5 items-center w-[120px]">
-                {dots.map((_, index) => (
-                  <DotIndicator key={index} />
-                ))}
-              </div>
-              <div className="text-base leading-6 text-black text-opacity-60 w-[618px] max-md:max-w-full">
-                At Jodiac, we offer stylish apparel to elevate your everyday look.
-                From comfy cotton tees and trendy oversized shirts to classic polos,
-                our collection ensures you stay effortlessly cool while showcasing
-                your unique cosmic style.
-              </div>
+          <div className="z-0 self-stretch text-8xl leading-tight uppercase max-md:text-4xl flex justify-center items-center" style={{ color: '#CEB863' }}>
+              Vibe Right Now !!
             </div>
-          </div>
+            <div className="w-full flex flex-col items-center bg-gray-100 py-10">
+  {/* Slider Container */}
+  <div className="relative w-[90%] overflow-hidden">
+    <div className="relative w-full h-[450px] md:h-[530px]">
+      {images.map((img, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-500 ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <img
+            src={img.src}
+            alt={`Image ${index + 1}`}
+            className="rounded-lg shadow-lg object-cover w-full h-full"
+          />
+          {/* Sale Banner on Current Image */}
+          {index === currentIndex && (
+            <div className="absolute bottom-5 left-5 bg-white p-4 shadow-md">
+              <p className="text-gray-600 text-sm">01 —— Spring Sale</p>
+              <p className="text-2xl font-bold">30% OFF</p>
+            </div>
+          )}
+        </div>
+      ))}
+
+      {/* Navigation Buttons */}
+      <button
+        onClick={() =>
+          setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+        }
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 flex justify-center items-center w-12 h-12 md:w-16 md:h-16 p-4 rounded-full bg-white hover:bg-gray-400 transition shadow-lg text-2xl"
+      >
+        &lt;
+      </button>
+
+      <button
+        onClick={() =>
+          setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+        }
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 flex justify-center items-center w-12 h-12 md:w-16 md:h-16 p-4 rounded-full bg-white hover:bg-gray-400 transition shadow-lg text-2xl"
+      >
+        &gt;
+      </button>
+    </div>
+  </div>
+
+  {/* Description Below */}
+  <p className="p-3 text-gray-700 text-left w-full leading-tight">
+    At Jodiac, we offer stylish apparel to elevate your everyday look. Our
+    collection ensures you stay effortlessly cool while showcasing your unique
+    cosmic style.
+  </p>
+</div>
+
           <div>
             <TrendVault />
             <Service />
@@ -360,3 +460,33 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// image opacity transition
+// {images.map((img, index) => (
+//   <img
+//     key={index}
+//     src={img.src}
+//     alt={`Image ${index + 1}`}
+//     className={`absolute rounded-lg shadow-lg object-cover transition-opacity duration-500 w-full h-full ${
+//       index === currentIndex ? "opacity-100" : "opacity-0"
+//     }`}
+//   />
+// ))}
