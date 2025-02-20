@@ -42,7 +42,7 @@ const Signin = () => {
       localStorage.setItem("token", data.accessToken);
 
       console.log("Sign-in successful", data);
-      router.push("/Homepage");
+      router.push("/homepage");
     } catch (error) {
       console.error("Error:", error);
       setError("Failed to sign in, please check your credentials.");
@@ -76,7 +76,6 @@ const Signin = () => {
           />
         </div>
       </div>
-
       {/* Right Section - Sign-In Form */}
       <div className="lg:w-1/2 flex flex-col justify-center items-center p-8 bg-white">
         <div className="w-full max-w-md">

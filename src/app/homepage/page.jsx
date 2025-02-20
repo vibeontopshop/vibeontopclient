@@ -19,13 +19,14 @@ import Ultimate from "../../assets/ULTIMATE.png"
 import Merged2 from "../../assets/SALE-removebg.png"
 import Mixed from "../../assets/mixed.png"
 import { DotIndicator } from "./DotIndicator";
-
+import VibeBanner from "../../assets/scBanner.png"
 import TrendVault from "./TrendVault";
 import Service from "./ServiceSection"
 import Layout from "./NewsletterLayout"
 import Footer from "./Footer"
-
+import axios from "axios"
 import { FaBars } from 'react-icons/fa';
+<<<<<<< HEAD
 
 // import First from "../../assets/first.png";
 const images = [
@@ -35,13 +36,20 @@ const images = [
   { src: "https://cdn.mos.cms.futurecdn.net/p5quSf4dZXctG9WFepXFdR.jpg" },
 ];
 const HomePage = () => {
+=======
+const Home = () => {
+>>>>>>> bd8ec4f033c1e3bdcc69ff85abb68744a5089e6f
   const [isTabView, setisTabView] = useState(false);
   const [isMobileView, setisMobileView] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false); // State to manage menu visibility
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+<<<<<<< HEAD
   const [imageList, setImageList] = useState(images);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+=======
+  const [user, setUser] = useState(null);
+>>>>>>> bd8ec4f033c1e3bdcc69ff85abb68744a5089e6f
 
   const prevSlide = () => {
     setImageList((prev) => [...prev.slice(1), prev[0]]); // Moves first to last
@@ -56,11 +64,11 @@ const HomePage = () => {
       setisMobileView(window.innerWidth <= 765);
     };
 
-    handleResize(); // Set initial state
-    window.addEventListener("resize", handleResize); // Add resize listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize); // Cleanup listener
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -77,13 +85,36 @@ const HomePage = () => {
       setisTabView(window.innerWidth <= 1200);
     };
 
-    handleResize(); // Set initial state
-    window.addEventListener("resize", handleResize); // Add resize listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize); // Cleanup listener
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem('token');
+  
+      if (!token) {
+        console.error('Token not available. You need to sign up to view the page.');
+        return;
+      }
+  
+      try {
+        const response = await axios.get('https://vibeontopbackend.onrender.com/api/auth/getuser', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setUser(response.data.user);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+  
+    fetchUser();
+  }, []);
+  
   const dots = Array(3).fill(null);
   return (
     <>
@@ -122,9 +153,12 @@ const HomePage = () => {
               {isTabView ? (
                 <div className="flex flex-row justify-center items-center">
                   <Image className="" src={Logo} alt="logo" width={100} />
-                  <button className="px-7 py-2 bg-[#CEB863] shadow-md shadow-gray-300">
-                    LOGIN
-                  </button>
+                  {user && user.name ? (
+  <span className="text-black">Hello, {user.name}</span>
+) : (
+  <span className="text-black">You need to sign in</span>
+)}
+
                 </div>
               ) : (
                 ""
@@ -169,14 +203,6 @@ const HomePage = () => {
                   />
                 </SwiperSlide>
               </Swiper>
-              <div className="flex flex-row justify-around items-center gap-10 mt-10">
-                <button className="px-7 py-2 bg-[#CEB863] shadow-md shadow-gray-300">
-                  For Business
-                </button>
-                <button className="px-7 py-2 bg-[#CEB863] shadow-md shadow-gray-300">
-                  For Consumer
-                </button>
-              </div>
             </section>
 
             <section className="flex-1 flex flex-col bg-custom-section-color">
@@ -194,9 +220,12 @@ const HomePage = () => {
                       <path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z" />
                     </svg></a>
                   {!isTabView ? (
-                    <button className="px-7 py-2 bg-[#CEB863] shadow-md shadow-gray-300">
-                      LOGIN
-                    </button>
+                    user && user.name ? (
+  <span className="text-black">Hello, {user.name}</span>
+) : (
+  <span className="text-black">You need to sign in</span>
+)
+
                   ) : (
                     <div className="flex flex-col items-center">
                       <p></p>
@@ -228,17 +257,13 @@ const HomePage = () => {
               <button></button>
             </div>
           </div>
-
-          {/* VIBE RIGHT NOW!!  */}
           <div className="flex shrink-0 self-stretch my-auto rounded-full bg-zinc-400 h-[11px] w-[11px]" />
           {/* <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
             <Image
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b5af165fcc82e55191558f64b0a54aaf1e52ef83c6ebc72dbcfba918fbec497?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
+              src= {VibeBanner}
               alt=""
               className="object-cover absolute inset-0 size-full"
-              width={500}
-              height={300}
             />
             <div className="flex relative flex-wrap gap-10 items-start max-w-full w-[857px]">
               <div className="flex gap-5 items-center w-[120px]">
@@ -321,31 +346,26 @@ const HomePage = () => {
             <FaBars
               size={30}
               color="white"
-              onClick={() => setMenuOpen(true)} // Open menu on click
+              onClick={() => setMenuOpen(true)}
               className="cursor-pointer"
             />
           </div>
-
-          {/* Full-Screen Menu */}
           <div
             className={`fixed inset-0 z-50 flex justify-end transition-opacity duration-300 ease-in-out ${menuOpen ? 'bg-black bg-opacity-50 opacity-100 visible' : 'opacity-0 invisible'
               }`}
-            onClick={() => setMenuOpen(false)} // Close menu on backdrop click
+            onClick={() => setMenuOpen(false)}
           >
-            {/* Sidebar Menu */}
             <div
               className={`bg-white w-3/5 h-full shadow-md transform transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'
                 }`}
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the menu
+              onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
               <button
                 className="absolute top-4 right-4 text-black text-xl"
-                onClick={() => setMenuOpen(false)} // Close on button click
+                onClick={() => setMenuOpen(false)}
               >
                 ✖
               </button>
-              {/* Menu Items */}
               <nav className="space-y-4 text-xl font-medium p-6">
                 <ul>
                   <li><a href="#home" className="hover:text-gray-600 list-none">Home</a></li>
@@ -363,7 +383,12 @@ const HomePage = () => {
             <section className="flex flex-col justify-center items-center w-full">
               <div className="flex justify-center items-center">
                 <Image className="" src={Logo} alt="logo" width={150} />
-                <button className="px-7 py-2 h-10 bg-[#CEB863] shadow-md shadow-gray-300">LOGIN</button>
+                {user && user.name ? (
+                  <span className="text-black">Hello, {user.name}</span>
+                    ) : (
+                  <span className="text-black">You need to sign in</span>
+                    )}
+
               </div>
               <Image className="" src={Merged} alt="logo" />
             </section>
@@ -389,8 +414,30 @@ const HomePage = () => {
           </div>
           nv2
           <div className="flex shrink-0 self-stretch my-auto rounded-full bg-zinc-400 h-[11px] w-[11px]" />
+<<<<<<< HEAD
           <div className="z-0 self-stretch text-8xl leading-tight uppercase max-md:text-4xl flex justify-center items-center" style={{ color: '#CEB863' }}>
               Vibe Right Now !!
+=======
+          <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
+            <Image
+              loading="lazy"
+              src={VibeBanner}
+              alt=""
+              className="object-cover absolute inset-0 size-full"
+            />
+            <div className="flex relative flex-wrap gap-10 items-start max-w-full w-[857px]">
+              <div className="flex gap-5 items-center w-[120px]">
+                {dots.map((_, index) => (
+                  <DotIndicator key={index} />
+                ))}
+              </div>
+              <div className="text-base leading-6 text-black text-opacity-60 w-[618px] max-md:max-w-full">
+                At Jodiac, we offer stylish apparel to elevate your everyday look.
+                From comfy cotton tees and trendy oversized shirts to classic polos,
+                our collection ensures you stay effortlessly cool while showcasing
+                your unique cosmic style.
+              </div>
+>>>>>>> bd8ec4f033c1e3bdcc69ff85abb68744a5089e6f
             </div>
             <div className="w-full flex flex-col items-center bg-gray-100 py-10">
   {/* Slider Container */}
@@ -459,6 +506,7 @@ const HomePage = () => {
   );
 };
 
+<<<<<<< HEAD
 export default HomePage;
 
 
@@ -490,3 +538,6 @@ export default HomePage;
 //     }`}
 //   />
 // ))}
+=======
+export default Home;
+>>>>>>> bd8ec4f033c1e3bdcc69ff85abb68744a5089e6f
