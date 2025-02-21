@@ -236,51 +236,46 @@ const HomePage = () => {
           <div className="flex shrink-0 self-stretch my-auto rounded-full bg-zinc-400 h-[11px] w-[11px]" />
 <div className="w-full flex flex-col items-center bg-gray-100 py-10"> 
   {/* Slider Container */}
-  <div className="relative flex w-[90%] overflow-hidden mx-auto">
-  <div
-    className="flex transition-transform duration-500 ease-in-out gap-1"
-    style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-  >
-    {imageList.map((img, index) => (
-      <div
-        key={index}
-        className={`relative shrink-0 transition-all duration-500 ${
-          index === activeIndex ? "w-[30%] h-[530px]" : "w-[25%] h-[450px]"
-        }`}
-      >
-        <div className="w-full h-full">
+  <div className="relative flex space-x-4 w-[90%] overflow-hidden">
+    <div className="flex transition-transform duration-500 gap-1">
+      {imageList.map((img, index) => (
+        <div
+          key={index}
+          className={`relative shrink-0 ${index === 0 ? "w-[30%]" : "w-[25%]"} transition-all duration-500`}
+        >
           <Image
-            src={images.slice}
+            src={img.src}
             alt={`Image ${index + 1}`}
-            className="rounded-lg shadow-lg object-cover w-full h-full"
+            className={`rounded-lg shadow-lg object-cover w-full h-[450px] ${index == 0 ? "h-[530px]" : ""}`}
           />
+          {index === 0 && (
+            <div className="absolute bottom-5 left-5 bg-white p-4 shadow-md">
+              <p className="text-gray-600 text-sm">01 — Spring Sale</p>
+              <p className="text-2xl font-bold">30% OFF</p>
+            </div>
+          )}
+
+          {/* Navigation Buttons inside First Image */}
+          {index === 0 && (
+            <>
+              <button 
+                onClick={prevSlide} 
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 flex justify-center items-center w-12 h-12 p-3 rounded-full bg-white hover:bg-gray-400 transition shadow-lg text-2xl"
+              >
+                &lt;
+              </button>
+              <button 
+                onClick={nextSlide} 
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 flex justify-center items-center w-12 h-12 p-3 rounded-full bg-white hover:bg-gray-400 transition shadow-lg text-2xl"
+              >
+                &gt;
+              </button>
+            </>
+          )}
         </div>
-
-        {index === activeIndex && (
-          <div className="absolute bottom-5 left-5 bg-white p-4 shadow-md">
-            <p className="text-gray-600 text-sm">01 — Spring Sale</p>
-            <p className="text-2xl font-bold">30% OFF</p>
-          </div>
-        )}
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
-
-  {/* Navigation Buttons */}
-  <button
-    onClick={prevSlide}
-    className="absolute left-3 top-1/2 transform -translate-y-1/2 flex justify-center items-center w-12 h-12 p-3 rounded-full bg-white hover:bg-gray-400 transition shadow-lg text-2xl"
-  >
-    &lt;
-  </button>
-  <button
-    onClick={nextSlide}
-    className="absolute right-3 top-1/2 transform -translate-y-1/2 flex justify-center items-center w-12 h-12 p-3 rounded-full bg-white hover:bg-gray-400 transition shadow-lg text-2xl"
-  >
-    &gt;
-  </button>
-</div>
-
 
   {/* Description Below */}
   <p className="mt-6 text-gray-700 text-center w-3/4">
