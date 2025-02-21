@@ -3,6 +3,7 @@ import ColorSelector from "./ColorSelector";
 import SizeSelector from "./SizeSelector";
 import WeightSelector from "./WeightSelector";
 import QuantitySelector from "./QuantitySelector";
+import Image from "next/image";
 
 function ProductDetails() {
   const [quantity, setQuantity] = React.useState(1);
@@ -47,7 +48,7 @@ function ProductDetails() {
         </div>
         <div className="flex flex-col items-start text-sm leading-6 text-green-700 w-[117px]">
           <div className="flex gap-1 px-2 py-0.5 bg-white rounded border border-solid border-slate-50">
-            <img
+            <Image
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c385657863cff1f67914b2c5817a2c8572cc6065a955e9ab3f75bdd1a9815d9?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
               alt=""
@@ -97,7 +98,7 @@ function ProductDetails() {
 
   <div className="flex gap-2">
     <button aria-label="Share product">
-      <img
+      <Image
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/6e0702359c2d497e3374df4fba4741ad7d6225fb83d60fd66907c97e2d1f5de1?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
         alt="Share"
@@ -106,7 +107,7 @@ function ProductDetails() {
     </button>
 
     <button aria-label="Add to wishlist">
-      <img
+      <Image
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/e3a984a7021fb10cdcda5558588cc312d62da33576ae63277c9d451276dbd92b?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
         alt="Wishlist"

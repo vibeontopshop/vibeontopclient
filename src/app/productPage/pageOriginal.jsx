@@ -174,7 +174,7 @@ const HomePage = () => {
                     nv2
                     <div className="flex shrink-0 self-stretch my-auto rounded-full bg-zinc-400 h-[11px] w-[11px]" />
                     <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
-                        <img
+                        <Image
                             loading="lazy"
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b5af165fcc82e55191558f64b0a54aaf1e52ef83c6ebc72dbcfba918fbec497?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
                             alt=""

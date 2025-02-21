@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import Image from "next/image";
 function UserActions() {
   const socialIcons = [
     { src: "https://cdn.builder.io/api/v1/image/assets/TEMP/ff7162ba267f9aee4b9a6b8cca4da82d3c838ee58130652d35fe98ac3416755a?apiKey=bee90f4503074c6fb2a2afcb7f5d52b9&", alt: "Social media icon 1" },
@@ -13,7 +13,7 @@ function UserActions() {
         <div className="text-2xl text-black">About</div>
         <div className="flex gap-2.5 items-center w-20">
           {socialIcons.map((icon, index) => (
-            <img
+            <Image
               key={index}
               src={icon.src}
               alt={icon.alt}
