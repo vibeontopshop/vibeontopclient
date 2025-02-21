@@ -1,8 +1,5 @@
 import * as React from "react";
-import ColorSelector from "../productPage/ColorSelector";
-import SizeSelector from "../productPage/SizeSelector";
-import WeightSelector from "../productPage/WeightSelector";
-import QuantitySelector from "../productPage/QuantitySelector";
+import Image from "next/image";
 
 function ProductDetails() {
   const [quantity, setQuantity] = React.useState(1);
@@ -47,7 +44,7 @@ function ProductDetails() {
         </div>
         <div className="flex flex-col items-start text-sm leading-6 text-green-700 w-[117px]">
           <div className="flex gap-1 px-2 py-0.5 bg-white rounded border border-solid border-slate-50">
-            <img
+            <Image
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c385657863cff1f67914b2c5817a2c8572cc6065a955e9ab3f75bdd1a9815d9?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
               alt=""

@@ -1,9 +1,9 @@
 import * as React from "react";
-
+import Image from "next/image";
 function ImageColumn({ src, className, alt }) {
   return (
     <div className={`flex flex-col ${className} max-md:ml-0 max-md:w-full`}>
-      <img
+      <Image
         loading="lazy"
         src={src}
         alt={alt}

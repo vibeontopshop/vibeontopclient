@@ -26,9 +26,6 @@ import Tab from "./TabNavigation"
 import Layout from "./NewsletterLayout"
 import Footer from "./Footer"
 import ProductRecommendation from "./ProductRecommendations"
-import TrendVault from "../homepage/TrendVault"
-import Latest from "../homepage/LatestDrip"
-import Service from "../homepage/ServiceSection"
 import TabNavigation from "../productPage/TabNavigation"
 
 import { FaBars } from 'react-icons/fa';
@@ -61,14 +58,6 @@ const HomePage = () => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-
-
-
-
-
-
-
-
     useEffect(() => {
         const handleResize = () => {
             setisTabView(window.innerWidth <= 1200);

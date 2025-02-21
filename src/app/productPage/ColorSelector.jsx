@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import Image from "next/image";
 const ColorSelector = ({ colors }) => {
   return (
     <div className="flex flex-col grow shrink self-stretch my-auto w-52 min-w-[240px]">
@@ -9,7 +9,7 @@ const ColorSelector = ({ colors }) => {
       <div className="flex gap-4 items-start mt-4">
         {colors.map((color, index) => (
           color.image ? (
-            <img
+            <Image
               key={index}
               loading="lazy"
               src={color.image}

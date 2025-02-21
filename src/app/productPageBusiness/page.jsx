@@ -24,11 +24,8 @@ import Nav from "../productPage/NavigationBar"
 import ProductThumbnailGallery from "../productPage/ProductImageGallery"
 import Tab from "../productPage/TabNavigation"
 import Layout from "../productPage/NewsletterLayout"
-import Footer from "../homepage/Footer"
+import Footer from "../Mainpage/Footer"
 import ProductRecommendation from "../productPage/ProductRecommendations"
-import TrendVault from "../homepage/TrendVault"
-import Latest from "../homepage/LatestDrip"
-import Service from "../homepage/ServiceSection"
 import TabNavigation from "../productPage/TabNavigation"
 
 import { FaBars } from 'react-icons/fa';

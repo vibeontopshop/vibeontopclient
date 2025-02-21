@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
+import Image from "next/image";
 
 function ProductImageGallery() {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -19,7 +20,7 @@ function ProductImageGallery() {
     <div className="flex flex-col md:flex-row gap-4 items-center">
       {/* Large Image */}
       <div className="w-full md:w-[372px] order-1 md:order-none">
-        <img
+        <Image
           loading="lazy"
           src={thumbnails[selectedImage]}
           alt={`Product image ${selectedImage + 1}`}
@@ -38,7 +39,7 @@ function ProductImageGallery() {
             }`}
             aria-label={`View product image ${index + 1}`}
           >
-            <img
+            <Image
               loading="lazy"
               src={src}
               alt={`Product thumbnail ${index + 1}`}

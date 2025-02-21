@@ -243,7 +243,7 @@ const HomePage = () => {
           key={index}
           className={`relative shrink-0 ${index === 0 ? "w-[30%]" : "w-[25%]"} transition-all duration-500`}
         >
-          <img
+          <Image
             src={img.src}
             alt={`Image ${index + 1}`}
             className={`rounded-lg shadow-lg object-cover w-full h-[450px] ${index == 0 ? "h-[530px]" : ""}`}
@@ -383,7 +383,7 @@ const HomePage = () => {
             index === currentIndex ? "opacity-100" : "opacity-0"
           }`}
         >
-          <img
+          <Image
             src={img.src}
             alt={`Image ${index + 1}`}
             className="rounded-lg shadow-lg object-cover w-full h-full"

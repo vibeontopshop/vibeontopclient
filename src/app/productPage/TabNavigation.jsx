@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import Comp from "./MyComponent"
-import Rev from "./Reviews"
+import Comp from "./MyComponent";
+import Rev from "./Reviews";
+
 const TabNavigation = () => {
   const [activeTab, setActiveTab] = useState("Product Details");
   const [underlineStyle, setUnderlineStyle] = useState({});
@@ -15,7 +16,7 @@ const TabNavigation = () => {
     if (tabElement) {
       setUnderlineStyle({
         width: tabElement.offsetWidth,
-        left: tabElement.offsetLeft - 93, // Add a little left margin to shift it
+        left: tabElement.offsetLeft - 93, // Shift slightly to the left
       });
     }
   };
@@ -30,7 +31,7 @@ const TabNavigation = () => {
         left: tabElement.offsetLeft - 93, // Shift slightly to the left
       });
     }
-  }, [activeTab]);
+  }, [activeTab]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="w-full flex items-center justify-center">
@@ -41,8 +42,9 @@ const TabNavigation = () => {
             <div
               key={tab}
               ref={(el) => (tabsRef.current[index] = el)}
-              className={`cursor-pointer pb-2 text-gray-500 ${activeTab === tab ? "text-black font-semibold" : ""
-                }`}
+              className={`cursor-pointer pb-2 text-gray-500 ${
+                activeTab === tab ? "text-black font-semibold" : ""
+              }`}
               onClick={() => handleTabClick(tab, index)}
             >
               {tab}
@@ -53,9 +55,8 @@ const TabNavigation = () => {
             className="absolute bottom-0 h-1 bg-black transition-all duration-300"
             style={{
               ...underlineStyle,
-              // Set bottom margin to be right on the text
-              marginBottom: "-1px",
-              transition: "all 0.3s ease",  // Smooth transition
+              marginBottom: "-1px", // Adjust bottom margin
+              transition: "all 0.3s ease", // Smooth transition
             }}
           />
         </div>
@@ -63,10 +64,19 @@ const TabNavigation = () => {
         {/* Tab Content */}
         <div className="mt-4 p-4 text-center">
           {activeTab === "Product Details" && <div>Here are the product details.</div>}
-          {activeTab === "Rating & Reviews" && <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
-            <Rev />
-            <Comp />
-          </div>}
+          {activeTab === "Rating & Reviews" && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              <Rev />
+              <Comp />
+            </div>
+          )}
           {activeTab === "FAQs" && <div>Here are the FAQs.</div>}
         </div>
       </div>
