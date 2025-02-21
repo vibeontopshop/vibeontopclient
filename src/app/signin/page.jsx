@@ -42,7 +42,7 @@ const Signin = () => {
       localStorage.setItem("token", data.accessToken);
 
       console.log("Sign-in successful", data);
-      router.push("/homepage");
+      router.push("/Homepage");
     } catch (error) {
       console.error("Error:", error);
       setError("Failed to sign in, please check your credentials.");
@@ -51,9 +51,7 @@ const Signin = () => {
 
   return (
     <div className="flex min-h-screen flex-col lg:flex-row bg-gray-800 text-gray-800">
-      {/* Left Section - Image and Logo */}
       <div className="lg:w-1/2 sm:relative flex flex-col justify-center items-center bg-gray-100">
-        {/* Logo */}
 <div className=" absolute top-0 left-64 z-10 flex items-center px-0 py-8 rounded-md sm:left-10 sm:top-0 lg:left-4 lg:top-4">
   <Image
     src={Logo}
@@ -63,9 +61,6 @@ const Signin = () => {
     className="w-1/2 sm:w-2/3 lg:w-1/3"
   />
 </div>
-
-
-        {/* Main Image */}
         <div className="relative w-full h-full">
           <Image
             src={BgImage}
@@ -76,14 +71,12 @@ const Signin = () => {
           />
         </div>
       </div>
-      {/* Right Section - Sign-In Form */}
       <div className="lg:w-1/2 flex flex-col justify-center items-center p-8 bg-white">
         <div className="w-full max-w-md">
           <h1 className="text-3xl font-bold text-gray-900">Welcome</h1>
           <p className="mt-1 text-sm text-gray-500">Please sign in here</p>
 
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-            {/* Email Address */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email Address
@@ -142,8 +135,7 @@ const Signin = () => {
             >
               Sign In
             </button>
-
-            {/* Not Registered Yet */}
+            {error && <p className="text-red-500 mt-4">{error}</p>}
             <div className="mt-4 text-center">
               <span>Not Registered Yet?</span>
               <Link href="/signup" className="text-black-600 hover:underline ml-1">

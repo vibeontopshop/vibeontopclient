@@ -18,17 +18,12 @@ import Merged from "../../assets/merged.png"
 import Ultimate from "../../assets/ULTIMATE.png"
 import Merged2 from "../../assets/SALE-removebg.png"
 import Mixed from "../../assets/mixed.png"
-import { DotIndicator } from "./DotIndicator";
-import VibeBanner from "../../assets/scBanner.png"
 import TrendVault from "./TrendVault";
 import Service from "./ServiceSection"
 import Layout from "./NewsletterLayout"
 import Footer from "./Footer"
 import axios from "axios"
 import { FaBars } from 'react-icons/fa';
-<<<<<<< HEAD
-
-// import First from "../../assets/first.png";
 const images = [
   { src: "https://c0.wallpaperflare.com/preview/192/66/526/front-view-of-man-s-face.jpg" },
   { src: "https://images.unsplash.com/photo-1563170446-9c3c0622d8a9?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvcnRyYWl0JTIwcGhvdG9ncmFwaHl8ZW58MHx8MHx8fDA%3D" },
@@ -36,62 +31,45 @@ const images = [
   { src: "https://cdn.mos.cms.futurecdn.net/p5quSf4dZXctG9WFepXFdR.jpg" },
 ];
 const HomePage = () => {
-=======
-const Home = () => {
->>>>>>> bd8ec4f033c1e3bdcc69ff85abb68744a5089e6f
   const [isTabView, setisTabView] = useState(false);
   const [isMobileView, setisMobileView] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-<<<<<<< HEAD
   const [imageList, setImageList] = useState(images);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-=======
   const [user, setUser] = useState(null);
->>>>>>> bd8ec4f033c1e3bdcc69ff85abb68744a5089e6f
+
 
   const prevSlide = () => {
-    setImageList((prev) => [...prev.slice(1), prev[0]]); // Moves first to last
+    setImageList((prev) => [...prev.slice(1), prev[0]]);
   };
 
   const nextSlide = () => {
-    setImageList((prev) => [prev[prev.length - 1], ...prev.slice(0, -1)]); // Moves last to first
+    setImageList((prev) => [prev[prev.length - 1], ...prev.slice(0, -1)]);
   };
 
   useEffect(() => {
     const handleResize = () => {
-      setisMobileView(window.innerWidth <= 765);
+      const width = window.innerWidth;
+      setisMobileView(width <= 765);
+      setisTabView(width <= 1200);
     };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
+  
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setScrolled(scrollTop > 50);
+      setScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  useEffect(() => {
-    const handleResize = () => {
-      setisTabView(window.innerWidth <= 1200);
-    };
-
     handleResize();
+    handleScroll();
+  
     window.addEventListener("resize", handleResize);
-
+    window.addEventListener("scroll", handleScroll);
+  
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -114,8 +92,6 @@ const Home = () => {
   
     fetchUser();
   }, []);
-  
-  const dots = Array(3).fill(null);
   return (
     <>
       {!isMobileView ? (
@@ -258,27 +234,6 @@ const Home = () => {
             </div>
           </div>
           <div className="flex shrink-0 self-stretch my-auto rounded-full bg-zinc-400 h-[11px] w-[11px]" />
-          {/* <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
-            <Image
-              loading="lazy"
-              src= {VibeBanner}
-              alt=""
-              className="object-cover absolute inset-0 size-full"
-            />
-            <div className="flex relative flex-wrap gap-10 items-start max-w-full w-[857px]">
-              <div className="flex gap-5 items-center w-[120px]">
-                {dots.map((_, index) => (
-                  <DotIndicator key={index} />
-                ))}
-              </div>
-              <div className="text-base leading-6 text-black text-opacity-60 w-[618px] max-md:max-w-full">
-                At Jodiac, we offer stylish apparel to elevate your everyday look.
-                From comfy cotton tees and trendy oversized shirts to classic polos,
-                our collection ensures you stay effortlessly cool while showcasing
-                your unique cosmic style.
-              </div>
-            </div>
-          </div> */}
 <div className="w-full flex flex-col items-center bg-gray-100 py-10"> 
   {/* Slider Container */}
   <div className="relative flex space-x-4 w-[90%] overflow-hidden">
@@ -414,30 +369,8 @@ const Home = () => {
           </div>
           nv2
           <div className="flex shrink-0 self-stretch my-auto rounded-full bg-zinc-400 h-[11px] w-[11px]" />
-<<<<<<< HEAD
           <div className="z-0 self-stretch text-8xl leading-tight uppercase max-md:text-4xl flex justify-center items-center" style={{ color: '#CEB863' }}>
               Vibe Right Now !!
-=======
-          <div className="flex relative flex-col items-end px-16 pb-11 w-full min-h-[755px] pt-[643px] max-md:px-5 max-md:pt-24 max-md:max-w-full">
-            <Image
-              loading="lazy"
-              src={VibeBanner}
-              alt=""
-              className="object-cover absolute inset-0 size-full"
-            />
-            <div className="flex relative flex-wrap gap-10 items-start max-w-full w-[857px]">
-              <div className="flex gap-5 items-center w-[120px]">
-                {dots.map((_, index) => (
-                  <DotIndicator key={index} />
-                ))}
-              </div>
-              <div className="text-base leading-6 text-black text-opacity-60 w-[618px] max-md:max-w-full">
-                At Jodiac, we offer stylish apparel to elevate your everyday look.
-                From comfy cotton tees and trendy oversized shirts to classic polos,
-                our collection ensures you stay effortlessly cool while showcasing
-                your unique cosmic style.
-              </div>
->>>>>>> bd8ec4f033c1e3bdcc69ff85abb68744a5089e6f
             </div>
             <div className="w-full flex flex-col items-center bg-gray-100 py-10">
   {/* Slider Container */}
@@ -506,38 +439,4 @@ const Home = () => {
   );
 };
 
-<<<<<<< HEAD
 export default HomePage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// image opacity transition
-// {images.map((img, index) => (
-//   <img
-//     key={index}
-//     src={img.src}
-//     alt={`Image ${index + 1}`}
-//     className={`absolute rounded-lg shadow-lg object-cover transition-opacity duration-500 w-full h-full ${
-//       index === currentIndex ? "opacity-100" : "opacity-0"
-//     }`}
-//   />
-// ))}
-=======
-export default Home;
->>>>>>> bd8ec4f033c1e3bdcc69ff85abb68744a5089e6f

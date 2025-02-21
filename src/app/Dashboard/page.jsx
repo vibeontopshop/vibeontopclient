@@ -43,11 +43,11 @@ const Home = () => {
       setisMobileView(window.innerWidth <= 765);
     };
   
-    handleResize(); // Set initial state
-    window.addEventListener("resize", handleResize); // Add resize listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
   
     return () => {
-      window.removeEventListener("resize", handleResize); // Cleanup listener
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   useEffect(() => {
