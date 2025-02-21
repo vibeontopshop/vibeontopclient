@@ -19,11 +19,14 @@ export default class TrendVault extends React.Component {
         <div className="grid grid-cols-3 gap-4 p-4">
   <div className="grid grid-rows-2 gap-4">
     <div className="relative h-[350px]">
-      <Image
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/870c079b3e6a574a2d3aac0ba3913700bd98f069e335baab67c45f1c8743b21a"
-        alt="Fashion 1"
-        className="w-full h-full object-cover"
-      />
+    <Image
+  src="https://cdn.builder.io/api/v1/image/assets/TEMP/870c079b3e6a574a2d3aac0ba3913700bd98f069e335baab67c45f1c8743b21a"
+  alt="Fashion 1"
+  className="w-full h-full object-cover"
+  width={500} // Example width
+  height={500} // Example height
+/>
+
       <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-4">
         <h2 className="text-lg font-semibold">Jacquard Fabric</h2>
         <p className="text-sm">03 — Summer Sale</p>
@@ -34,6 +37,8 @@ export default class TrendVault extends React.Component {
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/b00e2882d3224b98aeaf2059de3d0ed0ec3f861a95808750fd82698192525331"
         alt="Fashion 2"
         className="w-full h-full object-cover"
+        width={100}
+        height={100}
       />
       <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-4">
         <h2 className="text-lg font-semibold">Jacquard Fabric</h2>
@@ -46,6 +51,8 @@ export default class TrendVault extends React.Component {
       src="https://cdn.builder.io/api/v1/image/assets/TEMP/ec2cc20923b386fe87b6c3d87a0ebd9c08695fc74c58ea20da839926609a267b"
       alt="Fashion 3"
       className="w-full h-full object-cover"
+      width={100}
+      height={100}
     />
     <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-4">
       <h2 className="text-lg font-semibold">Jacquard Fabric</h2>

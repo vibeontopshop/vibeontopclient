@@ -243,11 +243,14 @@ const HomePage = () => {
           key={index}
           className={`relative shrink-0 ${index === 0 ? "w-[30%]" : "w-[25%]"} transition-all duration-500`}
         >
-          <Image
-            src={img.src}
-            alt={`Image ${index + 1}`}
-            className={`rounded-lg shadow-lg object-cover w-full h-[450px] ${index == 0 ? "h-[530px]" : ""}`}
-          />
+        <Image
+  src={img.src}
+  alt={`Image ${index + 1}`}
+  width={800}
+  height={450}
+  className={`rounded-lg shadow-lg object-cover w-full h-[450px] ${index == 0 ? "h-[530px]" : ""}`}
+/>
+
           {index === 0 && (
             <div className="absolute bottom-5 left-5 bg-white p-4 shadow-md">
               <p className="text-gray-600 text-sm">01 — Spring Sale</p>
