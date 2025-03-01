@@ -20,10 +20,9 @@ import Merged2 from "../../assets/SALE-removebg.png"
 import Mixed from "../../assets/mixed.png"
 
 
-import Footer from '../homepage/Footer'
-import TrendVault from "../homepage/TrendVault"
-import Latest from "../homepage/LatestDrip"
-import Service from "../homepage/ServiceSection"
+import Footer from '../Mainpage/Footer'
+import TrendVault from "../Mainpage/TrendVault"
+import Service from "../Mainpage/ServiceSection"
 import TabNavigation from "../productPage/TabNavigation"
 import MyOrders from "./MyOrders"
 import MyWishlist from "./MyWishlist"
