@@ -44,7 +44,7 @@ const SliderComponent = () => {
           <div
             key={index}
             className={`relative shrink-0 transition-all duration-500 ease-in-out transform
-              ${index === 0 ? "w-[70vw] md:w-[30%] scale-105 opacity-100" : "w-[50vw] md:w-[25%] scale-95 opacity-80"}
+              ${index === 0 ? "w-[60vw] md:w-[30%] scale-105 opacity-100" : "w-[50vw] md:w-[25%] scale-95 opacity-80"}
               ${isSliding ? "translate-x-[-10px]" : "translate-x-0"}
             `}
           >

@@ -107,7 +107,7 @@ const TrendVault = () => {
             rotate: 1,
             transition: { duration: 0.3 },
           }}
-          className="relative h-80 sm:h-[500px] md:col-span-2 overflow-hidden rounded-lg"
+          className="relative h-96 sm:h-[600px] md:col-span-2 overflow-hidden rounded-lg"
         >
           <Image
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/ec2cc20923b386fe87b6c3d87a0ebd9c08695fc74c58ea20da839926609a267b"
