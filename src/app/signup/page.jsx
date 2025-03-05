@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; 
 import BgImage from "../../assets/signup.png";
 import Logo from "../../assets/logo.png";
 
 export default function SignUp() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     FirstName: "",
     email: "",
@@ -19,11 +21,12 @@ export default function SignUp() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
+      console.log("Submitting form data:", formData);
+  
       const response = await fetch("https://vibeontopbackend.onrender.com/api/auth/signup", {
         method: "POST",
         headers: {
@@ -31,20 +34,33 @@ export default function SignUp() {
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Sign-up failed.");
       }
-
+  
       const data = await response.json();
-      setSuccessMessage("Registration successful! You can now log in.");
-      setError(null); // Clear any previous errors
+      console.log("API Response:", data);
+  
+      if (!data.accessToken) {
+        throw new Error("No accessToken received. Check backend response.");
+      }
+  
+      localStorage.setItem("token", data.accessToken);
+  
+      setError(null);
+      setSuccessMessage("Sign-up successful! Redirecting...");
+  
+      router.push("/Mainpage");
     } catch (err) {
+      console.error("Sign-up error:", err);
       setError(err.message);
-      setSuccessMessage(null); // Clear any previous success message
+      setSuccessMessage(null);
     }
   };
+  
+  
 
   return (
     <div className="flex min-h-screen flex-col lg:flex-row bg-gray-800 text-gray-800">
@@ -60,8 +76,6 @@ export default function SignUp() {
             className="w-1/2 sm:w-2/3 lg:w-1/3"
           />
         </div>
-
-        {/* Main Image */}
         <div className="relative w-full h-full">
           <Image
             src={BgImage}
