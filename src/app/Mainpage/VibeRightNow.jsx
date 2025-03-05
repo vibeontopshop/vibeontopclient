@@ -39,7 +39,7 @@ const SliderComponent = () => {
       </h2>
 
       {/* Slider Container */}
-      <div className="relative flex gap-4 w-[90%] overflow-hidden pt-10">
+      <div className="relative flex gap-8 w-[90%] overflow-hidden pt-10">
         {imageList.map((img, index) => (
           <div
             key={index}
