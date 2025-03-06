@@ -1,21 +1,30 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const TrendVault = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { triggerOnce: true, threshold: 0.2 });
+
   return (
-    <div className="flex flex-col items-center w-full p-4 md:p-8">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="flex flex-col items-center w-full p-4 md:p-8"
+    >
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="flex flex-col md:flex-row justify-between items-center w-full"
       >
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
           className="text-[#CEB863] text-4xl md:text-8xl uppercase font-bold"
         >
@@ -37,7 +46,7 @@ const TrendVault = () => {
       {/* Image Grid */}
       <motion.div
         initial="hidden"
-        animate="visible"
+        animate={isInView ? "visible" : "hidden"}
         variants={{
           hidden: { opacity: 0 },
           visible: {
@@ -56,7 +65,7 @@ const TrendVault = () => {
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9, y: 40 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
               transition={{
                 duration: 0.6,
                 ease: "easeOut",
@@ -80,9 +89,9 @@ const TrendVault = () => {
               />
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: 0.8 }}
-                className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-3"
+                className="absolute bottom-10 left-5 w-full bg-black bg-opacity-50 backdrop-blur-md text-white p-3"
               >
                 <h2 className="text-lg font-semibold">Jacquard Fabric</h2>
                 <p className="text-sm">03 — Summer Sale</p>
@@ -94,7 +103,7 @@ const TrendVault = () => {
         {/* Right Column (Large Image) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
           transition={{
             duration: 0.8,
             ease: "easeOut",
@@ -107,7 +116,7 @@ const TrendVault = () => {
             rotate: 1,
             transition: { duration: 0.3 },
           }}
-          className="relative h-96 sm:h-[600px] md:col-span-2 overflow-hidden rounded-lg"
+          className="relative h-96 sm:h-[600px] md:col-span-2 overflow-hidden rounded-lg "
         >
           <Image
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/ec2cc20923b386fe87b6c3d87a0ebd9c08695fc74c58ea20da839926609a267b"
@@ -118,16 +127,16 @@ const TrendVault = () => {
           />
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.9 }}
-            className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-3"
+            className="absolute bottom-5 left-4 mb-20 bg-black bg-opacity-40 backdrop-blur-md text-white px-10 py-12 rounded-lg w-2/3 md:w-1/2"
           >
             <h2 className="text-lg font-semibold">Jacquard Fabric</h2>
             <p className="text-sm">03 — Summer Sale</p>
           </motion.div>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
