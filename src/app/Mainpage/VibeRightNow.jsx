@@ -1,15 +1,28 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-const images = [
-  { src: "https://c0.wallpaperflare.com/preview/192/66/526/front-view-of-man-s-face.jpg" },
-  { src: "https://images.unsplash.com/photo-1563170446-9c3c0622d8a9?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvcnRyYWl0JTIwcGhvdG9ncmFwaHl8ZW58MHx8MHx8fDA%3D" },
-  { src: "https://img.freepik.com/free-photo/close-up-portrait-young-african-man-with-stubble_171337-1296.jpg" },
-  { src: "https://cdn.mos.cms.futurecdn.net/p5quSf4dZXctG9WFepXFdR.jpg" },
-];
+
 const SliderComponent = () => {
-  const [imageList, setImageList] = useState(images);
+  const [imageList, setImageList] = useState([]);
   const [isSliding, setIsSliding] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/productdetails/getproduct");
+        const data = await response.json();
+        setImageList(data.map(item => ({ src: item.image }))); // Extracting image URLs
+      } catch (err) {
+        setError("Failed to load images");
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchImages();
+  }, []);
 
   const nextSlide = () => {
     if (isSliding) return;
@@ -29,6 +42,9 @@ const SliderComponent = () => {
     }, 500);
   };
 
+  if (loading) return <p className="text-center text-gray-700">Loading...</p>;
+  if (error) return <p className="text-center text-red-600">{error}</p>;
+
   return (
     <div className="w-screen flex flex-col items-center bg-gray-100 py-16">
       <h2
@@ -38,7 +54,6 @@ const SliderComponent = () => {
         Vibe Right Now !!
       </h2>
 
-      {/* Slider Container */}
       <div className="relative flex gap-8 w-[90%] overflow-hidden pt-10">
         {imageList.map((img, index) => (
           <div
