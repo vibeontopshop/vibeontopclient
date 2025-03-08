@@ -11,7 +11,7 @@ const SliderComponent = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/productdetails/getproduct");
+        const response = await fetch("https://vibeontopbackend.onrender.com/api/productdetails/getproduct");
         const data = await response.json();
         setImageList(data.map(item => ({ src: item.image }))); // Extracting image URLs
       } catch (err) {
