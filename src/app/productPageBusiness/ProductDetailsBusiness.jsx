@@ -5,7 +5,6 @@ function ProductDetails() {
   const [quantity, setQuantity] = React.useState(1);
 
   const colors = [
-    { image: "https://cdn.builder.io/api/v1/image/assets/TEMP/c561ffed449dd91aaf9ee0a34bf994dabed4bc43c4e23810877d390152d6563a?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9" },
     { bgClass: "bg-cyan-500", name: "cyan" },
     { bgClass: "bg-pink-500", name: "pink" },
     { bgClass: "bg-yellow-500", name: "yellow" },
@@ -49,6 +48,8 @@ function ProductDetails() {
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c385657863cff1f67914b2c5817a2c8572cc6065a955e9ab3f75bdd1a9815d9?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
               alt=""
               className="object-contain shrink-0 my-auto w-4 aspect-square"
+              width={20} // width in px
+              height={20}
             />
             <div>In stock </div>
           </div>

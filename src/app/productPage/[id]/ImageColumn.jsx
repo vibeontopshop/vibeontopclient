@@ -8,6 +8,8 @@ function ImageColumn({ src, className, alt }) {
         src={src}
         alt={alt}
         className="object-contain grow w-full aspect-[0.48] max-md:mt-7"
+        width={20}
+        height={20}
       />
     </div>
   );

@@ -14,6 +14,8 @@ const QuantitySelector = ({ value, onIncrease, onDecrease }) => {
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/de4b68fef6db652744c8d394d693f22f3ea73b670f5eeb3d95f91f5582eeb081?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
             alt=""
+            width={20} // width in px
+            height={20}
           />
         </button>
         <div className="self-stretch my-auto">{value}</div>
@@ -26,6 +28,8 @@ const QuantitySelector = ({ value, onIncrease, onDecrease }) => {
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/83c1e736cb3928a45d8b85ea9ce69f72298f02b1b355a1a8d10cbe7ec794d8c1?placeholderIfAbsent=true&apiKey=bee90f4503074c6fb2a2afcb7f5d52b9"
             alt=""
+            width={20}
+            height={20}
           />
         </button>
       </div>

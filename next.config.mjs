@@ -7,7 +7,10 @@ const nextConfig = {
       "images.unsplash.com",
       "img.freepik.com",
       "cdn.mos.cms.futurecdn.net",
-      "res.cloudinary.com"
+      "res.cloudinary.com",
+      'media.istockphoto.com',
+      "images.pexels.com",
+      "placehold.co"
     ],
   },
 };

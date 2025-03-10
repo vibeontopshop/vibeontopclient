@@ -16,6 +16,8 @@ function UserActions() {
             <Image
               key={index}
               src={icon.src}
+              width={20}
+              height={20}
               alt={icon.alt}
               className="object-contain w-6 aspect-square"
             />

@@ -18,6 +18,8 @@ const Footer = () => {
             <Image
               src="/logo.png"
               alt="Jodiac Logo"
+              width={50}
+              height={50}
               className="h-auto w-[81px]"
               priority
             />

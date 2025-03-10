@@ -9,7 +9,7 @@ import Tab from "./TabNavigation"
 import Layout from "./NewsletterLayout"
 import Footer from "./Footer"
 import ProductRecommendation from "./ProductRecommendations"
-import TabNavigation from "../productPage/TabNavigation"
+import TabNavigation from "./TabNavigation"
 
 import { FaBars } from 'react-icons/fa';
 
