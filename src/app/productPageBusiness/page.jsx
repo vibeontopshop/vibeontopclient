@@ -1,32 +1,15 @@
 "use client"
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import Logo from "../../assets/logoEdit.png";
-import LeftMainPicture from "../../assets/b/w.png";
-import RightMainPicture from "../../assets/image.png";
-import Vot1 from "../../assets/VOTEdit.png";
-import Ontop from "../../assets/OnTopEdit.png";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { FreeMode, Pagination, Autoplay } from "swiper/modules";
-import GroupBg from "../../assets/Group 1000006046.png";
-import Group from "../../assets/group.png";
-import Cap from "../../assets/images.png"
-import Text from "../../assets/text.png"
-import Merged from "../../assets/merged.png"
-import Ultimate from "../../assets/ULTIMATE.png"
-import Merged2 from "../../assets/SALE-removebg.png"
-import Mixed from "../../assets/mixed.png"
-
 import ProductDetailsBusiness from "./ProductDetailsBusiness"
-import Nav from "../productPage/NavigationBar"
-import ProductThumbnailGallery from "../productPage/ProductImageGallery"
-import Tab from "../productPage/TabNavigation"
-import Layout from "../productPage/NewsletterLayout"
+import Nav from "../productPage/[id]/NavigationBar"
+import ProductThumbnailGallery from "../productPage/[id]/ProductImageGallery"
+import Tab from "../productPage/[id]/TabNavigation"
+import Layout from "../productPage/[id]/NewsletterLayout"
 import Footer from "../Mainpage/Footer"
-import ProductRecommendation from "../productPage/ProductRecommendations"
-import TabNavigation from "../productPage/TabNavigation"
+import ProductRecommendation from "../productPage/[id]/ProductRecommendations"
+import TabNavigation from "../productPage/[id]/TabNavigation"
 
 import { FaBars } from 'react-icons/fa';
 

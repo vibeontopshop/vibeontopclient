@@ -11,8 +11,8 @@ import Topsection from "./Topsection";
 import SlideComponent from "./VibeRightNow";
 
 const HomePage = () => {
-  const [isTabView, setIsTabView] = useState(window.innerWidth <= 1200);
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 765);
+  const [isTabView, setIsTabView] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -26,7 +26,7 @@ const HomePage = () => {
       setScrolled(window.scrollY > 50);
     };
 
-    // Initial check
+    // Initial run in client
     handleResize();
     handleScroll();
 
@@ -41,6 +41,8 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
+      if (typeof window === "undefined") return; // Just in case
+
       const token = localStorage.getItem("token");
 
       if (!token) {

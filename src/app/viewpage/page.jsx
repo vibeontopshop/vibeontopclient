@@ -2,32 +2,12 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Logo from "../../assets/logoEdit.png";
-import LeftMainPicture from "../../assets/b/w.png";
-import RightMainPicture from "../../assets/image.png";
-import Vot1 from "../../assets/VOTEdit.png";
-import Ontop from "../../assets/OnTopEdit.png";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { FreeMode, Pagination, Autoplay } from "swiper/modules";
-import GroupBg from "../../assets/Group 1000006046.png";
-import Group from "../../assets/group.png";
-import Cap from "../../assets/images.png"
-import Text from "../../assets/text.png"
-import Merged from "../../assets/merged.png"
-import Ultimate from "../../assets/ULTIMATE.png"
-import Merged2 from "../../assets/SALE-removebg.png"
-import Mixed from "../../assets/mixed.png"
-
-
 import Footer from '../Mainpage/Footer'
-import TrendVault from "../Mainpage/TrendVault"
-import Service from "../Mainpage/ServiceSection"
-import TabNavigation from "../productPage/TabNavigation"
 import MyOrders from "./MyOrders"
 import MyWishlist from "./MyWishlist"
 import Notifications from "./Notification"
-
 import { FaBars } from 'react-icons/fa';
 
 const Profile = () => {
@@ -80,14 +60,6 @@ const Profile = () => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-
-
-
-
-
-
-
-
     useEffect(() => {
         const handleResize = () => {
             setisTabView(window.innerWidth <= 1200);
@@ -144,18 +116,6 @@ const Profile = () => {
                 </nav>
               </header>
               </div>
-
-
-
-
-
-
-
-
-
-
-
-
                     <div className="flex justify-between items-center p-4 bg-white shadow-md mb-3">
   <h1 className="text-xl font-semibold">My Profile</h1>
   <div className="flex items-center space-x-4">
@@ -299,47 +259,6 @@ const Profile = () => {
 
 
             ) : (
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div className="h-lvh flex flex-col">
                     {/* Top Bar */}
                     <div className="bg-black text-white h-10 flex justify-between items-center p-6 text-xs">
