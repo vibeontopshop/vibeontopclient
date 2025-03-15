@@ -41,7 +41,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      if (typeof window === "undefined") return; // Just in case
+      if (typeof window === "undefined") return;
 
       const token = localStorage.getItem("token");
 

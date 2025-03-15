@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -6,7 +6,7 @@ import ProductDetails from "./ProductDetails"
 import Nav from "./NavigationBar"
 import ProductThumbnailGallery from "./ProductImageGallery"
 import Tab from "./TabNavigation"
-import Layout from "./NewsletterLayout"
+import Layout from "../../Mainpage/NewsletterLayout"
 import Footer from "./Footer"
 import ProductRecommendation from "./ProductRecommendations"
 import TabNavigation from "./TabNavigation"

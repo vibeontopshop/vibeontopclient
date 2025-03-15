@@ -6,7 +6,6 @@ import ProductDetailsBusiness from "./ProductDetailsBusiness"
 import Nav from "../productPage/[id]/NavigationBar"
 import ProductThumbnailGallery from "../productPage/[id]/ProductImageGallery"
 import Tab from "../productPage/[id]/TabNavigation"
-import Layout from "../productPage/[id]/NewsletterLayout"
 import Footer from "../Mainpage/Footer"
 import ProductRecommendation from "../productPage/[id]/ProductRecommendations"
 import TabNavigation from "../productPage/[id]/TabNavigation"
@@ -74,7 +73,6 @@ const HomePage = () => {
                     </div>
                     <Tab style={{ marginTop: "2rem" }} />
                     <ProductRecommendation/>
-                    <Layout />
                     <Footer />
                 </div>
 
@@ -133,7 +131,6 @@ const HomePage = () => {
                         </div>
                                             nv2
                     <div className="flex shrink-0 self-stretch my-auto rounded-full bg-zinc-400 h-[11px] w-[11px]" />
-            <Layout />
             <Footer />
                 </div>
             )}

@@ -16,10 +16,8 @@ const SliderComponent = () => {
       try {
         const response = await fetch("https://vibeontopbackend.onrender.com/api/productdetails/getproduct");
         const data = await response.json();
-
-        // Grab the first image from the images array of each product
         const mappedImages = data.map(item => ({
-          src: item.images[0],  // Use the first image in the 'images' array
+          src: item.images[0],
           id: item._id,
         }));
 

@@ -1,8 +1,8 @@
+'use client';
 import * as React from "react";
 import TopBanner from "./TopBanner";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
-import UserActions from "./UserActions";
 
 function NavigationBar() {
   return (
@@ -13,7 +13,6 @@ function NavigationBar() {
           <Logo />
           <NavLinks />
         </div>
-        <UserActions />
       </div>
     </div>
   );

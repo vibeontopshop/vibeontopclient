@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useRef, useEffect } from "react";
 import Comp from "./MyComponent";
 import Rev from "./Reviews";
