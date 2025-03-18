@@ -57,6 +57,7 @@ export default function ExistingAddress({onDeliverHere}) {
 
     if (selectedAddress) {
       localStorage.setItem('selectedAddress', JSON.stringify(selectedAddress));
+      console.log(selectedAddress)
 
       alert(`Delivering to: ${selectedAddress.streetAddress}, ${selectedAddress.city}`);
 
@@ -65,7 +66,6 @@ export default function ExistingAddress({onDeliverHere}) {
       }
     }
   };
-
   const handleEdit = (addressId) => {
     console.log('Edit address:', addressId);
     alert('Edit functionality coming soon!');

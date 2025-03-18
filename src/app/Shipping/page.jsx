@@ -6,6 +6,7 @@ import Addaddress from './Addaddress';
 import OrderSummary from './Ordersummary';
 import Footer from '../Mainpage/Footer';
 import Payment from "./payment";
+import Review from './Review';
 
 export default function Shipping() {
   const [currentStep, setCurrentStep] = useState('address');
@@ -60,21 +61,19 @@ export default function Shipping() {
           )}
 
           {currentStep === 'payment' && (
-            <>
-              <Payment/>
-            </>
-          )}
-
+  <>
+    <Payment onPaymentSuccess={() => setCurrentStep('review')} />
+  </>
+)}
           {currentStep === 'review' && (
             <>
-              <h2 className="text-2xl font-bold mb-4">Review Your Order</h2>
+              <h2 className="text-2xl font-bold mb-4"><Review/></h2>
             </>
           )}
         </div>
 
         <OrderSummary />
       </main>
-
       <Footer />
     </div>
   );

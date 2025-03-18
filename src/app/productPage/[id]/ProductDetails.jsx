@@ -52,6 +52,7 @@ function ProductDetails() {
     };
   
     localStorage.setItem('selectedProduct', JSON.stringify(selectedProductDetails));
+    console.log(selectedProductDetails)
   
     router.push('/Shipping');
   };

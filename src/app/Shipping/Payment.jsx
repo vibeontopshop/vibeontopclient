@@ -24,10 +24,17 @@ export default function Payment({ onPaymentSuccess }) {
         setLoading(false);
         return;
       }
+
       setTimeout(() => {
         setLoading(false);
         setMessage('Payment method selected successfully!');
 
+        localStorage.setItem('paymentStatus', 'success');
+        localStorage.setItem('paymentMethod', paymentMethod);
+        console.log(paymentMethod)
+        if (paymentMethod === 'upi') {
+          localStorage.setItem('upiId', upiId);
+        }
         if (onPaymentSuccess) {
           onPaymentSuccess();
         }
@@ -42,7 +49,6 @@ export default function Payment({ onPaymentSuccess }) {
   return (
     <div className="mt-10">
       <h2 className="text-2xl font-semibold mb-4">Select Payment Method</h2>
-
       <form onSubmit={handlePaymentSubmit} className="flex flex-col space-y-4">
         <div className="border p-4 rounded flex flex-col space-y-2">
           <label className="flex items-center space-x-2">
@@ -56,7 +62,6 @@ export default function Payment({ onPaymentSuccess }) {
             />
             <span>UPI</span>
           </label>
-
           {paymentMethod === 'upi' && (
             <input
               type="text"
@@ -73,9 +78,9 @@ export default function Payment({ onPaymentSuccess }) {
           <input
             type="radio"
             name="paymentMethod"
-            value="cod"
-            checked={paymentMethod === 'cod'}
-            onChange={() => setPaymentMethod('cod')}
+            value="Cash on Delivery"
+            checked={paymentMethod === 'Cash on Delivery'}
+            onChange={() => setPaymentMethod('Cash on Delivery')}
             className="h-4 w-4"
           />
           <span>Cash on Delivery</span>
@@ -84,14 +89,22 @@ export default function Payment({ onPaymentSuccess }) {
         <button
           type="submit"
           disabled={loading}
-          className={`py-3 px-6 rounded w-max text-white ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-yellow-600 hover:bg-yellow-700'}`}
+          className={`py-3 px-6 rounded w-max text-white ${
+            loading
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-yellow-600 hover:bg-yellow-700'
+          }`}
         >
           {loading ? 'Processing...' : 'Continue to Review'}
         </button>
       </form>
 
       {message && (
-        <p className={`mt-4 ${message.includes('success') ? 'text-green-600' : 'text-red-600'}`}>
+        <p
+          className={`mt-4 ${
+            message.includes('success') ? 'text-green-600' : 'text-red-600'
+          }`}
+        >
           {message}
         </p>
       )}

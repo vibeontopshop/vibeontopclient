@@ -3,7 +3,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import axios from "axios"; // Make sure axios is imported!
+import axios from "axios"; 
 
 function ProductImageGallery() {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -43,13 +43,10 @@ function ProductImageGallery() {
   if (error) {
     return <p className="text-center text-red-600">{error}</p>;
   }
-
-  // Fallback if there are no images
   const productImages = product?.images || [];
 
   return (
     <div className="flex flex-col md:flex-row gap-4 items-center">
-      {/* Selected Main Image */}
       <div className="w-full md:w-[372px] order-1 md:order-none transition-all duration-300 ease-in-out">
         {productImages.length > 0 ? (
           <Image

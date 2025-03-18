@@ -60,10 +60,6 @@ export default function Ordersummary() {
         <span>Total</span>
         <span>₹{total.toFixed(2)}</span>
       </div>
-
-      <button className="bg-yellow-600 text-white py-3 px-6 rounded w-full">
-        Checkout Here →
-      </button>
     </div>
   );
 }
