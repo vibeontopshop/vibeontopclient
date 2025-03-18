@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Logo from '../../assets/logo2.png';
+import Logo from "../../assets/logoEdit.png"; 
 
 export default function Navbar() {
   return (
