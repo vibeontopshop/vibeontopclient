@@ -5,7 +5,7 @@ import NavBar from './Navbar';
 import Addaddress from './Addaddress';
 import OrderSummary from './Ordersummary';
 import Footer from '../Mainpage/Footer';
-import Payment from "./payment";
+import Payment from './Payment'
 import Review from './Review';
 
 export default function Shipping() {
