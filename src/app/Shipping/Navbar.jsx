@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiOutlineMenuAlt3, HiX } from 'react-icons/hi'; // Hamburger & close icons
+import { HiOutlineMenuAlt3, HiX } from 'react-icons/hi';
 import Logo from "../../assets/logoEdit.png";
 
 export default function Navbar() {
@@ -62,7 +62,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center space-x-8 text-black">
+        <nav className="hidden  md:flex items-center space-x-8 text-black">
           {['HOME', 'CATEGORY', 'CONTACT', 'ABOUT'].map((item, index) => (
             <motion.a
               key={index}
@@ -72,7 +72,6 @@ export default function Navbar() {
               className="relative text-black hover:text-yellow-600 transition duration-300 group"
             >
               {item}
-              {/* Glowing underline */}
               <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-yellow-500 transition-all duration-500 group-hover:w-full group-hover:shadow-[0_0_10px_#facc15]"></span>
             </motion.a>
           ))}

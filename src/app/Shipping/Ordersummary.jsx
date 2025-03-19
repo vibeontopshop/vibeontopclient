@@ -39,13 +39,37 @@ export default function Ordersummary() {
     mountRef.current.appendChild(renderer.domElement);
 
     /** ---------- LIGHTING ---------- **/
-    const ambientLight = new THREE.AmbientLight(0xfacc15, 0.5); // ochre yellow
-    scene.add(ambientLight);
+// Warm Ambient Light (soft yellow glow)
+const ambientLight = new THREE.AmbientLight(0xfacc15, 0.6); // ochre yellow (stronger intensity)
+scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(5, 10, 5);
-    directionalLight.castShadow = true;
-    scene.add(directionalLight);
+// Hemisphere Light (simulates sky and ground lighting)
+const hemisphereLight = new THREE.HemisphereLight(0xfff1c1, 0x080820, 0.4); 
+scene.add(hemisphereLight);
+
+// Directional Light (sunlight)
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 10, 7);
+directionalLight.castShadow = true;
+directionalLight.shadow.mapSize.width = 1024; // Higher shadow resolution
+directionalLight.shadow.mapSize.height = 1024;
+directionalLight.shadow.camera.near = 0.5;
+directionalLight.shadow.camera.far = 50;
+scene.add(directionalLight);
+
+// Add a subtle point light to give highlights to edges
+const pointLight = new THREE.PointLight(0xffa500, 0.5, 100); // warm orange light
+pointLight.position.set(-3, 5, 3);
+scene.add(pointLight);
+
+// Optional: spotlight for dramatic effect
+const spotLight = new THREE.SpotLight(0xffffff, 0.3);
+spotLight.position.set(0, 10, 10);
+spotLight.angle = Math.PI / 6;
+spotLight.penumbra = 0.2;
+spotLight.castShadow = true;
+scene.add(spotLight);
+
 
     /** ---------- FLOOR ---------- **/
     const planeGeometry = new THREE.PlaneGeometry(500, 500);
@@ -56,16 +80,24 @@ export default function Ordersummary() {
     plane.receiveShadow = true;
     scene.add(plane);
 
-    /** ---------- CARD GEOMETRY ---------- **/
-    const geometry = new RoundedBoxGeometry(3, 4, 0.2, 8, 0.3);
+/** ---------- CARD GEOMETRY ---------- **/
+const geometry = new RoundedBoxGeometry(3, 4, 0.2, 8, 0.3);
 
-    const sideMaterial = new THREE.MeshPhysicalMaterial({
-      color: '#78350f', // Deep ochre/brown
-      metalness: 0.6,
-      roughness: 0.3,
-      clearcoat: 0.6,
-      reflectivity: 0.7
-    });
+const sideMaterial = new THREE.MeshPhysicalMaterial({
+  color: '#8B4513',
+  metalness: 0.5, 
+  roughness: 0.2, 
+  clearcoat: 0.9,  
+  clearcoatRoughness: 0.05, 
+  reflectivity: 0.8,
+  sheen: 0.5,      
+  iridescence: 0.2, 
+  iridescenceIOR: 1.3,
+  thickness: 0.5,  
+  transmission: 0.05, 
+  opacity: 1.0,     
+  envMapIntensity: 1.0 
+})
 
     /** ---------- FRONT CANVAS ---------- **/
     const frontCanvas = document.createElement('canvas');
