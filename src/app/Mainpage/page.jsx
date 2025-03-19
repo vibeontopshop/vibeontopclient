@@ -26,7 +26,6 @@ const HomePage = () => {
       setScrolled(window.scrollY > 50);
     };
 
-    // Initial run in client
     handleResize();
     handleScroll();
 

@@ -14,11 +14,9 @@ export default function Shipping() {
   const handleNextStep = () => {
     setCurrentStep('payment');
   };
-
   return (
     <div className="min-h-screen bg-white text-black flex flex-col">
       <NavBar />
-
       <main className="flex flex-col md:flex-row justify-between px-10 py-10 space-y-10 md:space-y-0">
         <div className="flex flex-col w-full md:w-3/5 space-y-6">
           <h1 className="text-3xl font-bold mb-4">Shipping Address</h1>

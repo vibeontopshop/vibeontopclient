@@ -73,10 +73,10 @@ fetchUser();
     };
   
     handleResize(); 
-    window.addEventListener("resize", handleResize); // Add resize listener
+    window.addEventListener("resize", handleResize);
   
     return () => {
-      window.removeEventListener("resize", handleResize); // Cleanup listener
+      window.removeEventListener("resize", handleResize); 
     };
   }, []);
   

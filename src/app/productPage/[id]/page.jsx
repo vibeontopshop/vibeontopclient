@@ -98,8 +98,8 @@ const HomePage = () => {
                             <nav className="space-y-4 text-xl font-medium p-6">
                                 <ul>
                                     <li><a href="#home" className="hover:text-gray-600 list-none">Home</a></li>
-                                    <li><a href="#about" className="hover:text-gray-600 list-none">About</a></li>
-                                    <li><a href="#services" className="hover:text-gray-600 list-none">Services</a></li>
+                                    <li><a href="#about" className="hover:text-gray-600 list-none">Cart</a></li>
+                                    <li><a href="#services" className="hover:text-gray-600 list-none">About</a></li>
                                     <li><a href="#contact" className="hover:text-gray-600 list-none">Contact</a></li>
                                 </ul>
                             </nav>
