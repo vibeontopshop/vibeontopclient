@@ -6,35 +6,44 @@ import axios from "axios";
 import { FiShare2 } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useRouter } from 'next/navigation';
+import { color } from "framer-motion";
+
 function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedWeight, setSelectedWeight] = useState(null);
+  
   const params = useParams();       
-  const id = params.id;
+  const id = params?.id;
+  
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
   const router = useRouter();
+
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
         const res = await axios.get(`https://vibeontopbackend.onrender.com/api/product/${id}`);
-        setProduct(res.data.product);
-        setSelectedColor(res.data.product.color?.[0] || null);
-        setSelectedSize(res.data.product.size?.[0] || null);
-        setSelectedWeight(res.data.product.weight?.[0] || null);
-        setLoading(false);
+        const data = res.data.product;
+        setProduct(data);
+        setSelectedColor(data.color?.[0] || null);
+        setSelectedSize(data.size?.[0] || null);
+        setSelectedWeight(data.weight?.[0] || null);
       } catch (err) {
         setError("Something went wrong while fetching product details");
+      } finally {
         setLoading(false);
       }
     };
+
     if (id) {  
       fetchProductDetails();
     }
   }, [id]);
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
   if (!product) return <div>Product not found</div>;
@@ -50,13 +59,49 @@ function ProductDetails() {
       price: product.price,
       discount: product.discount
     };
-  
+
     localStorage.setItem('selectedProduct', JSON.stringify(selectedProductDetails));
-    console.log(selectedProductDetails)
-  
+    console.log(selectedProductDetails);
+
     router.push('/Shipping');
   };
-  
+
+  const handleAddToCart = async () => {
+    try {
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        alert('You must be logged in to add items to your cart.');
+        return;
+      }
+
+      const res = await axios.post(
+        'https://vibeontopbackend.onrender.com/api/Cart/addcart',
+        {
+          productId: id,
+          quantity: quantity, 
+          color: selectedColor,
+          size: selectedSize,
+          Weight: selectedWeight,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        alert('Product added to cart!');
+        console.log(res.data);
+      } else {
+        alert('Failed to add to cart!');
+      }
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      alert('An error occurred while adding the product to cart.');
+    }
+  };
 
   return (
     <div className="flex flex-col items-start rounded-none max-w-[590px] p-3">
@@ -94,7 +139,7 @@ function ProductDetails() {
       <div className="mt-8 w-full">
         <h3 className="text-lg font-medium mb-2">Select Color:</h3>
         <div className="flex gap-3 flex-wrap">
-          {product.color.map((color, index) => (
+          {product.color?.map((color, index) => (
             <button
               key={index}
               onClick={() => setSelectedColor(color)}
@@ -112,7 +157,7 @@ function ProductDetails() {
       <div className="mt-6 w-full">
         <h3 className="text-lg font-medium mb-2">Select Size:</h3>
         <div className="flex gap-3 flex-wrap">
-          {product.size.map((size, index) => (
+          {product.size?.map((size, index) => (
             <button
               key={index}
               onClick={() => setSelectedSize(size)}
@@ -130,7 +175,7 @@ function ProductDetails() {
       <div className="mt-6 w-full">
         <h3 className="text-lg font-medium mb-2">Select Weight:</h3>
         <div className="flex gap-3 flex-wrap">
-          {product.weight.map((weight, index) => (
+          {product.weight?.map((weight, index) => (
             <button
               key={index}
               onClick={() => setSelectedWeight(weight)}
@@ -148,6 +193,7 @@ function ProductDetails() {
       <div className="flex gap-2 items-center self-stretch mt-8 max-md:max-w-full">
         <div className="flex flex-col items-center gap-6 w-full">
           <button
+            onClick={handleAddToCart}
             className="relative group flex justify-center items-center px-10 py-4 rounded-full bg-gradient-to-r from-[#ffdc4e] to-[#1c1a01] shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[240px] w-full max-md:px-5"
             aria-label="Add to cart"
           >
@@ -156,7 +202,6 @@ function ProductDetails() {
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-[#ffdc4e] to-[#1c1a01] opacity-25 blur-lg rounded-full group-hover:opacity-50 transition duration-300"></div>
           </button>
-
           <button
             className="relative group flex justify-center items-center px-10 py-4 rounded-full bg-gradient-to-r from-[#1c1a01] to-[#ffdc4e] shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 min-w-[240px] w-full max-md:px-5"
             aria-label="Checkout"

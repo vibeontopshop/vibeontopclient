@@ -18,13 +18,10 @@ const HomePage = () => {
     const [isMobileView, setisMobileView] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-
-
     useEffect(() => {
         const handleResize = () => {
             setisMobileView(window.innerWidth <= 765);
         };
-
         handleResize(); 
         window.addEventListener("resize", handleResize); 
 
@@ -32,7 +29,6 @@ const HomePage = () => {
             window.removeEventListener("resize", handleResize); 
         };
     }, []);
-
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY;

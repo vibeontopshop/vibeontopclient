@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../assets/logoEdit.png'
 import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
 import { SiVisa, SiMastercard, SiPaypal, SiApplepay, SiGooglepay } from 'react-icons/si';
 import Image from 'next/image';
@@ -10,7 +11,7 @@ const Footer = () => {
         <div className="flex-[0_0_240px]">
           <div className="flex gap-4 items-center">
             <Image
-              src="/logo.png"
+              src={logo}
               alt="Jodiac Logo"
               className="h-auto w-[81px]"
               width={50}

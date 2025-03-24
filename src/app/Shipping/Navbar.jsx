@@ -19,7 +19,6 @@ export default function Navbar() {
         console.error('Token not available. You need to sign up to view the page.');
         return;
       }
-
       try {
         const response = await axios.get('https://vibeontopbackend.onrender.com/api/auth/getuser', {
           headers: { Authorization: `Bearer ${token}` },
@@ -35,7 +34,6 @@ export default function Navbar() {
 
   return (
     <div>
-      {/* Top Bar */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -44,15 +42,12 @@ export default function Navbar() {
       >
         Discount 20% For New Members. <span className="font-bold">ONLY FOR TODAY!!</span>
       </motion.div>
-
-      {/* Main Navbar */}
       <motion.header
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         className="relative flex items-center justify-between px-5 md:px-10 py-4 shadow-md bg-white"
       >
-        {/* Logo */}
         <div className="flex items-center space-x-2 text-2xl font-bold">
           <Image
             src={Logo}
@@ -60,8 +55,6 @@ export default function Navbar() {
             className="h-12 w-12 md:h-16 md:w-16"
           />
         </div>
-
-        {/* Desktop Nav Links */}
         <nav className="hidden  md:flex items-center space-x-8 text-black">
           {['HOME', 'CATEGORY', 'CONTACT', 'ABOUT'].map((item, index) => (
             <motion.a
@@ -122,7 +115,7 @@ export default function Navbar() {
                   href="#"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setIsMenuOpen(false)} // Close menu when clicked
+                  onClick={() => setIsMenuOpen(false)}
                   className="relative text-black hover:text-yellow-600 transition duration-300 group"
                 >
                   {item}

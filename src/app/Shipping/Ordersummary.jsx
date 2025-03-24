@@ -17,10 +17,8 @@ export default function Ordersummary() {
 
   useEffect(() => {
     if (!mountRef.current || !orderData) return;
-
-    /** ---------- THREE.JS INIT ---------- **/
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#fefce8'); // light ochre
+    scene.background = new THREE.Color('#ffffff');
 
     const camera = new THREE.PerspectiveCamera(
       50,
@@ -38,40 +36,32 @@ export default function Ordersummary() {
     renderer.shadowMap.enabled = true;
     mountRef.current.appendChild(renderer.domElement);
 
-    /** ---------- LIGHTING ---------- **/
-// Warm Ambient Light (soft yellow glow)
-const ambientLight = new THREE.AmbientLight(0xfacc15, 0.6); // ochre yellow (stronger intensity)
-scene.add(ambientLight);
+    const ambientLight = new THREE.AmbientLight(0xfacc15, 0.6);
+    scene.add(ambientLight);
 
-// Hemisphere Light (simulates sky and ground lighting)
-const hemisphereLight = new THREE.HemisphereLight(0xfff1c1, 0x080820, 0.4); 
-scene.add(hemisphereLight);
+    const hemisphereLight = new THREE.HemisphereLight(0xfff1c1, 0x080820, 0.4);
+    scene.add(hemisphereLight);
 
-// Directional Light (sunlight)
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(5, 10, 7);
-directionalLight.castShadow = true;
-directionalLight.shadow.mapSize.width = 1024; // Higher shadow resolution
-directionalLight.shadow.mapSize.height = 1024;
-directionalLight.shadow.camera.near = 0.5;
-directionalLight.shadow.camera.far = 50;
-scene.add(directionalLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 10, 7);
+    directionalLight.castShadow = true;
+    directionalLight.shadow.mapSize.width = 1024;
+    directionalLight.shadow.mapSize.height = 1024;
+    directionalLight.shadow.camera.near = 0.5;
+    directionalLight.shadow.camera.far = 50;
+    scene.add(directionalLight);
 
-// Add a subtle point light to give highlights to edges
-const pointLight = new THREE.PointLight(0xffa500, 0.5, 100); // warm orange light
-pointLight.position.set(-3, 5, 3);
-scene.add(pointLight);
+    const pointLight = new THREE.PointLight(0xffa500, 0.5, 100);
+    pointLight.position.set(-3, 5, 3);
+    scene.add(pointLight);
 
-// Optional: spotlight for dramatic effect
-const spotLight = new THREE.SpotLight(0xffffff, 0.3);
-spotLight.position.set(0, 10, 10);
-spotLight.angle = Math.PI / 6;
-spotLight.penumbra = 0.2;
-spotLight.castShadow = true;
-scene.add(spotLight);
+    const spotLight = new THREE.SpotLight(0xffffff, 0.3);
+    spotLight.position.set(0, 10, 10);
+    spotLight.angle = Math.PI / 6;
+    spotLight.penumbra = 0.2;
+    spotLight.castShadow = true;
+    scene.add(spotLight);
 
-
-    /** ---------- FLOOR ---------- **/
     const planeGeometry = new THREE.PlaneGeometry(500, 500);
     const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.15 });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
@@ -80,26 +70,24 @@ scene.add(spotLight);
     plane.receiveShadow = true;
     scene.add(plane);
 
-/** ---------- CARD GEOMETRY ---------- **/
-const geometry = new RoundedBoxGeometry(3, 4, 0.2, 8, 0.3);
+    const geometry = new RoundedBoxGeometry(3, 4, 0.2, 8, 0.3);
 
-const sideMaterial = new THREE.MeshPhysicalMaterial({
-  color: '#8B4513',
-  metalness: 0.5, 
-  roughness: 0.2, 
-  clearcoat: 0.9,  
-  clearcoatRoughness: 0.05, 
-  reflectivity: 0.8,
-  sheen: 0.5,      
-  iridescence: 0.2, 
-  iridescenceIOR: 1.3,
-  thickness: 0.5,  
-  transmission: 0.05, 
-  opacity: 1.0,     
-  envMapIntensity: 1.0 
-})
+    const sideMaterial = new THREE.MeshPhysicalMaterial({
+      color: '#8B4513',
+      metalness: 0.5,
+      roughness: 0.2,
+      clearcoat: 0.9,
+      clearcoatRoughness: 0.05,
+      reflectivity: 0.8,
+      sheen: 0.5,
+      iridescence: 0.2,
+      iridescenceIOR: 1.3,
+      thickness: 0.5,
+      transmission: 0.05,
+      opacity: 1.0,
+      envMapIntensity: 1.0
+    });
 
-    /** ---------- FRONT CANVAS ---------- **/
     const frontCanvas = document.createElement('canvas');
     frontCanvas.width = 1024;
     frontCanvas.height = 1024;
@@ -114,8 +102,7 @@ const sideMaterial = new THREE.MeshPhysicalMaterial({
 
     frontCtx.textAlign = 'center';
     frontCtx.textBaseline = 'middle';
-
-    frontCtx.fillStyle = '#78350f'; // Tailwind amber-900
+    frontCtx.fillStyle = '#78350f';
     frontCtx.font = 'bold 80px "Poppins", sans-serif';
     frontCtx.shadowColor = 'rgba(0,0,0,0.1)';
     frontCtx.shadowBlur = 10;
@@ -126,12 +113,12 @@ const sideMaterial = new THREE.MeshPhysicalMaterial({
     frontCtx.moveTo(160, 180);
     frontCtx.lineTo(864, 180);
     frontCtx.lineWidth = 6;
-    frontCtx.strokeStyle = '#d97706'; // amber-600
+    frontCtx.strokeStyle = '#d97706';
     frontCtx.stroke();
 
     frontCtx.textAlign = 'left';
-    frontCtx.fillStyle = '#1f2937'; // slate-800
-    frontCtx.font = 'bold 38px "Poppins", sans-serif';
+    frontCtx.fillStyle = '#1a1a1a';
+    frontCtx.font = 'bold 44px "Poppins", sans-serif';
 
     let startY = 260;
     const lineHeight = 60;
@@ -142,18 +129,17 @@ const sideMaterial = new THREE.MeshPhysicalMaterial({
     frontCtx.fillText(`Weight: ${orderData.weight}`, 120, startY + lineHeight * 3);
     frontCtx.fillText(`Quantity: ${orderData.quantity}`, 120, startY + lineHeight * 4);
 
-    frontCtx.font = 'bold 42px "Poppins", sans-serif';
+    frontCtx.font = 'bold 48px "Poppins", sans-serif';
     frontCtx.fillText(`Subtotal: ₹${(orderData.price * orderData.quantity).toFixed(2)}`, 120, startY + lineHeight * 5);
     frontCtx.fillText(`Discount: ${orderData.discount}%`, 120, startY + lineHeight * 6);
 
-    frontCtx.fillStyle = '#dc2626'; // red-600
+    frontCtx.fillStyle = '#dc2626';
     frontCtx.font = 'bold 48px "Poppins", sans-serif';
     frontCtx.fillText(`TOTAL: ₹${((orderData.price * orderData.quantity) - ((orderData.price * orderData.quantity * orderData.discount) / 100)).toFixed(2)}`, 120, startY + lineHeight * 7);
 
     const frontTexture = new THREE.CanvasTexture(frontCanvas);
     const frontMaterial = new THREE.MeshBasicMaterial({ map: frontTexture });
 
-    /** ---------- BACK CANVAS ---------- **/
     const backCanvas = document.createElement('canvas');
     backCanvas.width = 1024;
     backCanvas.height = 1024;
@@ -179,21 +165,11 @@ const sideMaterial = new THREE.MeshPhysicalMaterial({
     const backTexture = new THREE.CanvasTexture(backCanvas);
     const backMaterial = new THREE.MeshBasicMaterial({ map: backTexture });
 
-    /** ---------- MATERIALS ---------- **/
-    const materials = [
-      sideMaterial,  // right
-      sideMaterial,  // left
-      sideMaterial,  // top
-      sideMaterial,  // bottom
-      frontMaterial, // front
-      backMaterial   // back
-    ];
-
+    const materials = [sideMaterial, sideMaterial, sideMaterial, sideMaterial, frontMaterial, backMaterial];
     const card = new THREE.Mesh(geometry, materials);
     card.castShadow = true;
     scene.add(card);
 
-    /** ---------- CONTROLS ---------- **/
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
@@ -214,7 +190,18 @@ const sideMaterial = new THREE.MeshPhysicalMaterial({
 
     animate();
 
+    const handleResize = () => {
+      const width = mountRef.current.clientWidth;
+      const height = mountRef.current.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('resize', handleResize);
       controls.dispose();
       renderer.dispose();
       if (mountRef.current && renderer.domElement) {
@@ -238,16 +225,19 @@ const sideMaterial = new THREE.MeshPhysicalMaterial({
     ctx.fill();
   }
 
+  if (!orderData) {
+    return (
+      <div className="flex items-center justify-center w-full h-[500px] text-amber-700 font-bold text-2xl">
+        Loading Order Summary...
+      </div>
+    );
+  }
+
   return (
     <div
-      className="w-full max-w-7xl mx-auto aspect-[3/2] sm:aspect-[5/3] md:aspect-[16/9] bg-gradient-to-br from-amber-50 via-amber-100 to-amber-200 rounded-3xl shadow-2xl p-4 border border-amber-300"
-      ref={mountRef}
+      className="w-full max-w-7xl mx-auto aspect-[3/2] sm:aspect-[5/3] md:aspect-[16/9] bg-gradient-to-br from-amber-50 via-amber-100 to-amber-200 rounded-2xl shadow-xl overflow-hidden relative"
     >
-      {!orderData && (
-        <div className="flex items-center justify-center h-full text-amber-700 text-lg font-semibold tracking-wide">
-          No items in your cart
-        </div>
-      )}
+      <div ref={mountRef} className="w-full h-full" />
     </div>
   );
 }
