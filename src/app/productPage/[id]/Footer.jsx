@@ -1,6 +1,7 @@
 'use client';
 import React from "react";
 import { FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa";
+import logo from '../../../assets/logoEdit.png'
 import {
   SiVisa,
   SiMastercard,
@@ -17,7 +18,7 @@ const Footer = () => {
         <div className="flex-[0_0_240px]">
           <div className="flex gap-4 items-center">
             <Image
-              src="/logo.png"
+              src={logo}
               alt="Jodiac Logo"
               width={50}
               height={50}
