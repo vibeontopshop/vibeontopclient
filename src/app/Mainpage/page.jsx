@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import TrendVault from "./TrendVault";
@@ -15,6 +15,10 @@ const HomePage = () => {
   const [isMobileView, setIsMobileView] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState(null);
+  const trendVaultRef = useRef(null);   
+  const scrollToTrendVault = () => {
+    trendVaultRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -67,9 +71,11 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col w-screen">
-      <Topsection />
+      <Topsection onCategoryClick={scrollToTrendVault} />
       <SlideComponent />
-      <TrendVault />
+<div ref={trendVaultRef}>
+        <TrendVault />
+      </div>
       <Service />
       <Layout />
       <Footer />
