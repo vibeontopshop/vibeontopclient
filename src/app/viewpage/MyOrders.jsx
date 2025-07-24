@@ -1,5 +1,7 @@
+'use client';
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
+import Image from 'next/image';
 
 const MyOrders = () => {
   return (
@@ -9,7 +11,7 @@ const MyOrders = () => {
         {["Yellow", "Green", "Black"].map((color, index) => (
           <div key={index} className="flex flex-col sm:flex-row items-center sm:justify-between border p-4 rounded-lg">
             <div className="flex flex-col sm:flex-row items-center sm:space-x-4">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtnvAOajH9gS4C30cRF7rD_voaTAKly2Ntaw&s" 
+              <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtnvAOajH9gS4C30cRF7rD_voaTAKly2Ntaw&s" 
                 alt="Product" className="w-20 h-20 rounded-md object-cover" />
               <div className="text-center sm:text-left mt-2 sm:mt-0">
                 <h2 className="font-semibold">Jacquard Woven Fabric</h2>

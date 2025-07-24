@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; // Import useRouter
 import Navbar from "../Shipping/Navbar";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Cart() {
     const [cart, setCart] = useState(null);
@@ -122,7 +123,7 @@ export default function Cart() {
                             className="bg-white border rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300"
                         >
                             <Link href={`/productPage/${item.productId._id}`}>
-                                <img
+                                <Image
                                     src={item.productId.images[0]}
                                     alt={item.productId.name}
                                     className="w-full h-48 object-cover rounded-md mb-3 cursor-pointer"
