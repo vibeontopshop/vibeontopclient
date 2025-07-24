@@ -26,7 +26,7 @@ function ProductDetails() {
 
     const fetchUserRole = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/api/auth/getuser', {
+        const res = await axios.get('https://vibeontopbackend.onrender.com/api/auth/getuser', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
