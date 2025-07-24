@@ -90,7 +90,7 @@ function ProductDetails() {
       }
 
       const res = await axios.post(
-        'https://vibeontopbackend.onrender.com/api/Cart/addcart',
+        'https://vibeontopbackend.onrender.com/api/cart/addtocart',
         {
           productId: id,
           quantity,
