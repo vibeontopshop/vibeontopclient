@@ -238,7 +238,7 @@ fetchUser();
     <nav className="space-y-4 text-xl font-medium p-6">
       <ul>
         <li><Link href="#home" className="hover:text-gray-600 list-none">Home</Link></li>
-        <li><Link href="#about" className="hover:text-gray-600 list-none">About</Link></li>
+        <li><Link href="/Aboutus" className="hover:text-gray-600 list-none">About</Link></li>
         <li><Link href="/Cart" className="hover:text-gray-600 list-none">Cart</Link></li>
         <li><Link href="#contact" className="hover:text-gray-600 list-none">Contact</Link></li>
       </ul>
