@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="flex gap-4 items-center">
             <Image
               src={logo}
-              alt="Jodiac Logo"
+              alt="VOT Logo"
               width={50}
               height={50}
               className="h-auto w-[81px]"
@@ -27,7 +27,7 @@ const Footer = () => {
             />
           </div>
           <div className="mt-6 text-sm leading-6 max-w-[248px] text-black text-opacity-60">
-            Jodiac collection! You&apos;ll find our exclusive collection of
+            VOT collection! You&apos;ll find our exclusive collection of
             Swag and cosmic style T-shirts, all designed in-house by our
             creative team.
           </div>
@@ -77,10 +77,10 @@ const Footer = () => {
               <br />
               <br />
               <a
-                href="mailto:jodiac777@gmail.com"
+                href="mailto:VOT777@gmail.com"
                 className="hover:text-black transition-colors"
               >
-                jodiac777@gmail.com
+                VOT777@gmail.com
               </a>
             </address>
           </div>
@@ -141,7 +141,7 @@ const Footer = () => {
       </div>
       <div className="flex justify-between items-center pt-5 mx-auto mt-10 mb-0 w-full border-t border-solid border-t-black border-t-opacity-10 max-w-[1240px] max-sm:flex-col max-sm:gap-5 max-sm:text-center">
         <div className="text-sm text-black text-opacity-60">
-          Jodiac.com &copy; {new Date().getFullYear()}, All Rights Reserved
+          VOT.com &copy; {new Date().getFullYear()}, All Rights Reserved
         </div>
         <div className="flex gap-3 items-center max-sm:justify-center">
           <SiVisa className="w-auto h-[30px]" aria-label="Visa" />

@@ -1,17 +1,19 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
-export default function ExistingAddress({onDeliverHere}) {
+export default function ExistingAddress({ onDeliverHere }) {
   const [addresses, setAddresses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedAddressId, setSelectedAddressId] = useState(null);
   const [token, setToken] = useState(null);
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedToken = localStorage.getItem('token');
       setToken(storedToken);
     }
   }, []);
+
   useEffect(() => {
     if (!token) return;
 
@@ -56,16 +58,16 @@ export default function ExistingAddress({onDeliverHere}) {
     const selectedAddress = addresses.find(addr => addr._id === selectedAddressId);
 
     if (selectedAddress) {
-      localStorage.setItem('selectedAddress', JSON.stringify(selectedAddress));
-      console.log(selectedAddress)
+  localStorage.setItem('selectedAddress', JSON.stringify(selectedAddress));
+  console.log(selectedAddress);
 
-      alert(`Delivering to: ${selectedAddress.streetAddress}, ${selectedAddress.city}`);
+  if (onDeliverHere) {
+    onDeliverHere(); // ✅ switch step in Checkout
+  }
+}
 
-      if (onDeliverHere) {
-        onDeliverHere();
-      }
-    }
   };
+
   const handleEdit = (addressId) => {
     console.log('Edit address:', addressId);
     alert('Edit functionality coming soon!');

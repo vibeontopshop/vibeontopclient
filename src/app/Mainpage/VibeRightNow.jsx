@@ -119,7 +119,7 @@ const SliderComponent = () => {
       </div>
 
       <p className="mt-6 text-gray-700 text-center w-11/12 md:w-3/4 px-4">
-        At Jodiac, we offer stylish apparel to elevate your everyday look. From comfy cotton tees and trendy oversized shirts to classic polos, our collection ensures you stay effortlessly cool while showcasing your unique cosmic style.
+        At VOT, we offer stylish apparel to elevate your everyday look. From comfy cotton tees and trendy oversized shirts to classic polos, our collection ensures you stay effortlessly cool while showcasing your unique cosmic style.
       </p>
     </div>
   );

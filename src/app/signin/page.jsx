@@ -23,31 +23,38 @@ const Signin = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const response = await fetch("https://vibeontopbackend.onrender.com/api/auth/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+  try {
+    const response = await fetch("http://localhost:8080/api/auth/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
-      if (!response.ok) {
-        throw new Error("Sign-in failed");
-      }
-
-      const data = await response.json();
-      localStorage.setItem("token", data.accessToken);
-
-      console.log("Sign-in successful", data);
-      router.push("/Mainpage");
-    } catch (error) {
-      console.error("Error:", error);
-      setError("Failed to sign in, please check your credentials.");
+    if (!response.ok) {
+      throw new Error("Sign-in failed");
     }
-  };
+
+    const data = await response.json();
+    localStorage.setItem("token", data.accessToken);
+
+    console.log("Sign-in successful", data);
+
+    // Check role and redirect
+    if (data.role === "admin") {
+      router.push("/AdminPanel");
+    } else {
+      router.push("/Mainpage");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    setError("Failed to sign in, please check your credentials.");
+  }
+};
+
 
   return (
     <div className="flex min-h-screen flex-col lg:flex-row bg-gray-800 text-gray-800">

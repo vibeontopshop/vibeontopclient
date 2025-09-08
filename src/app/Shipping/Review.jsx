@@ -1,7 +1,7 @@
-'use client'; // Only if you're using App Router in Next.js 13+
-
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Navbar from './Navbar';
 
 const Review = () => {
   const router = useRouter();
@@ -66,7 +66,7 @@ const Review = () => {
       };
 
       console.log('Order Payload:', orderPayload);
-      const response = await fetch('https://vibeontopbackend.onrender.com/api/Orders/createOrders', {
+      const response = await fetch('http://localhost:8080/api/Orders/createOrders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
