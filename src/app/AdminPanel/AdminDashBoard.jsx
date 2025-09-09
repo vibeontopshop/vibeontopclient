@@ -9,7 +9,7 @@ const AdminDashBoard = ({onActiveOrdersClick}) => {
     const [profitMargin,setProfitMargin] = useState(0);
 
       useEffect(() => {
-    fetch("http://localhost:8080/api/getActiveOrders")
+    fetch("https://vibeontopbackend.onrender.com/api/getActiveOrders")
       .then(res => res.json())
       .then(data => {
         if (data.success) {
@@ -21,7 +21,7 @@ const AdminDashBoard = ({onActiveOrdersClick}) => {
 
   // 🔹 Fetch Revenue
   useEffect(() => {
-    fetch("http://localhost:8080/api/getRevenue")
+    fetch("https://vibeontopbackend.onrender.com/api/getRevenue")
       .then(res => res.json())
       .then(data => {
         if (data.success) {
@@ -33,7 +33,7 @@ const AdminDashBoard = ({onActiveOrdersClick}) => {
 
   // 🔹 Fetch Profit Margin
   useEffect(() => {
-    fetch("http://localhost:8080/api/getRevenueAndCost")
+    fetch("https://vibeontopbackend.onrender.com/api/getRevenueAndCost")
       .then(res => res.json())
       .then(data => {
         if (data.success) {

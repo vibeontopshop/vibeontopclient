@@ -66,7 +66,7 @@ const Review = () => {
       };
 
       console.log('Order Payload:', orderPayload);
-      const response = await fetch('http://localhost:8080/api/Orders/createOrders', {
+      const response = await fetch('https://vibeontopbackend.onrender.com/api/Orders/createOrders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

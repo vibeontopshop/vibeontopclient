@@ -5,7 +5,7 @@ const ActiveOrders = ({ onBack }) => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/getActiveOrders")
+    fetch("https://vibeontopbackend.onrender.com/api/getActiveOrders")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
