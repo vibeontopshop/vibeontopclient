@@ -56,7 +56,7 @@ export default function Contactus() {
               setSubmitted(true);
             }}
           >
-            {["Full Name", "Email Address", "Your Message"].map((label, idx) => (
+            {["Full Name", "Email Address", "Your Message"].map((label) => (
               <motion.div key={label} variants={itemVariants} className="relative">
                 <label className="block mb-2 text-lg">{label}</label>
                 {label === "Your Message" ? (
@@ -92,7 +92,7 @@ export default function Contactus() {
             className="text-center py-12"
           >
             <p className="text-2xl mb-2">🎉 Thank you!</p>
-            <p className="text-lg text-[#5a5548]">We'll be in touch shortly.</p>
+            <p className="text-lg text-[#5a5548]">We&apos;ll be in touch shortly.</p>
           </motion.div>
         )}
       </motion.div>

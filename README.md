@@ -55,7 +55,7 @@ In the Project directory,you can run:
 | `npm run lint` | Runs ESLint to check for code standard violations. |
 
 ---
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 vibecartclient/

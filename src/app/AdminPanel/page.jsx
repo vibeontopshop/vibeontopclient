@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import { AdminNavbar } from "./AdminNavbar";
+import AdminNavbar from "./AdminNavbar"; // Fixed: Standard default import
 import DashboardCards from "./AdminDashBoard";
 import ActiveOrders from "./ActiveOrders";
-// TODO: create these
+// TODO: create these components when ready
 import Products from "./Products";
 import Analytics from "./Analytics";
 import Settings from "./Settings";
 
-const AdminPanel = () => {
+export default function AdminPanel() {
   const [view, setView] = useState("Dashboard");
 
   return (
@@ -25,12 +25,9 @@ const AdminPanel = () => {
         )}
         {view === "ActiveOrders" && <ActiveOrders onBack={() => setView("Dashboard")} />}
         {view === "Products" && <Products />}
-        {view === "Users" && <Users />}
         {view === "Analytics" && <Analytics />}
         {view === "Settings" && <Settings />}
       </main>
     </div>
   );
-};
-
-export default AdminPanel;
+}
